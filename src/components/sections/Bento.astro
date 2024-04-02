@@ -1,0 +1,51 @@
+---
+import {Icon} from 'astro-icon/components';
+---
+
+
+<section>
+    <article class="col-span-12 sm:col-span-6 md:col-span-3 lg:col-span-2 row-span-2 bg-brand-bg relative">
+        <Icon class='absolute top-3 left-3 text-3xl' name='feather:github' />
+        <h1>Visita mis repositorios</h1>
+    </article>
+    <article class="col-span-12 sm:col-span-6 md:col-span-9 lg:col-span-7 row-span-2 bg-red-500 relative">
+        <Icon class='absolute top-3 left-3 text-3xl' name='feather:file' />
+        <h1>Mis Notas</h1>
+    </article>
+    <article class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 row-span-3 bg-brand-linkedin relative">
+        <Icon class='absolute top-3 left-3 text-3xl' name='feather:linkedin' />
+        <h1>¿Quieres saber quien soy?</h1>
+    </article>
+    <article class="col-span-12 sm:col-span-6 md:col-span-8 lg:col-span-3 row-span-5 bg-red-500">
+        <h1>Nueva tendencia hacia el bento grid ¿de que se trata?</h1> 
+    </article>
+    <article class="col-span-12 lg:col-span-6 row-span-3 bg-red-600">
+        <h1>Hey! Soy QuesoCaliente</h1>
+    </article>
+    <article class="col-span-12 sm:col-span-6 md:col-span-3 row-span-2 bg-red-700">
+        <h1>Mira mi cv</h1>
+    </article>
+    <article class="col-span-12 sm:col-span-6 md:col-span-9 lg:col-span-4 row-span-3 bg-red-800">
+        <h1>Unete al Discord para charlar</h1>
+    </article>
+    <article class="col-span-12 md:col-span-6 lg:col-span-5 row-span-3 bg-red-900">
+        <h1>Diarias Genshin Impact !sr</h1>
+    </article>
+    <article class="col-span-12 md:col-span-3 row-span-1 bg-red-950">
+    </h1>@QuesoCaliente0</h1>
+    </article>
+</section>
+
+
+
+<style>
+    section {
+        @apply grid grid-cols-12 gap-4 p-4 max-w-screen-xl mx-auto min-h-screen;
+    }
+    article {
+        @apply flex flex-col justify-center items-center text-gray-100 rounded-lg;
+    }
+    article h1 {
+        @apply text-2xl text-center font-semibold;
+    }
+</style>
