@@ -1,10 +1,12 @@
 ---
+import type { HTMLTag } from 'astro/types'
+
 interface Props {
-  as?: string
+  htmlAs?: string
 }
 
-const { as } = Astro.props
-const Tag = as || 'h1'
+const { htmlAs} = Astro.props
+const Tag = (htmlAs || 'h1') as HTMLTag
 ---
 
 
