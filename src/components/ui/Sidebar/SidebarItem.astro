@@ -1,0 +1,53 @@
+---
+
+interface Props {
+  title: string;
+  href?: string;
+  style?: string;
+}
+
+const { title, href, style } = Astro.props
+
+
+---
+
+
+<a href={href}
+style={style}
+      class={`group nav-link mx-3 flex cursor-pointer items-center justify-start gap-5 rounded-tl-lg rounded-bl-lg py-3 px-3`}
+    >
+      <div
+        class={`flex icon items-center justify-center transition-all duration-500 ease-in-out  text-brand-icon group-hover:text-yellow-500`}
+      >
+      <slot name="icon" />
+      </div>
+      <span class={`text-gray-300 title  group-hover:text-white`}>
+        {title}
+      </span>
+    </a>
+   
+<script>
+  
+  document.addEventListener("astro:page-load", () => {
+  const navLinks = document.querySelectorAll(".nav-link") as NodeListOf<HTMLAnchorElement>;
+  navLinks.forEach(link => {
+    link.classList.remove('bg-cActiveMenu')
+    link.classList.remove('text-yellow-500')
+
+    const currentPath = window.location.pathname.slice(1);
+    const hrefArray = link.href.split("/");
+    const thisPath = hrefArray[hrefArray.length - 1];
+    if (currentPath === thisPath) {
+    const icon = link.querySelector('.icon') as HTMLElement
+    const title = link.querySelector('.title') as HTMLElement
+    title.classList.remove('text-gray-300')
+      title.classList.add('text-white')
+    icon.classList.remove('text-brand-icon')
+      link.classList.add("bg-cActiveMenu");
+      link.classList.add("text-yellow-500");
+    }
+})
+});
+
+</script>
+  

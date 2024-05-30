@@ -1,0 +1,74 @@
+---
+import SidebarPost from "@/components/ui/Sidebar/SidebarPost.astro";
+import Layout from "./Layout.astro";
+import Divider from "@/components/ui/Divider.astro";
+import Prose from "@/components/ui/Prose.astro";
+import { Icon } from "astro-icon/components";
+import FormattedDate from "@/components/ui/FormattedDate.astro";
+
+const {frontmatter} = Astro.props;
+---
+
+
+<Layout
+ title={frontmatter.title}
+ description={frontmatter.description}
+    
+> 
+<main>
+    <article>
+        <header>
+            <div>
+                <h1>{frontmatter.title}</h1>
+                <div class="mt-3 text-sm flex flex-wrap items-center gap-4">
+                    <a href={`#`} >
+                        <div  class="w-12 h-12 bg-black rounded-full" />
+                    </a>
+                    <div>
+                      <time class="capitalize text-gray-500" datetime="2024-03-26T13:33:00-05:00">
+                        <FormattedDate date={new Date(frontmatter.updatedAt)} />
+                    </time>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button aria-label="Compartir" class="text-gray-500">
+                    <Icon name="mdi:bookmark" class="w-8 h-8" />
+                </button>
+            </div>
+        </header>
+        <section>
+            <Prose>
+                <slot/>
+            </Prose>
+        </section>
+        <footer>
+            <Divider/>
+            <div class="giscus mt-10" />
+        </footer>
+    </article>
+    <SidebarPost />
+</main>
+</Layout>
+
+
+<style>
+    footer {
+        @apply mt-10;
+    }
+  article {
+    @apply w-full bg-white min-h-screen p-10 md:rounded-lg shadow-elevation flex-1;
+  }
+  main {
+    @apply md:py-12 w-full flex flex-col md:flex-row gap-8 mx-auto max-w-screen-xl;
+  }
+  aside {
+    @apply hidden md:block md:w-64 bg-red-500;
+  }
+  h1 {
+    @apply text-2xl
+  }
+  header {
+    @apply flex justify-between mb-7;
+  }
+</style>

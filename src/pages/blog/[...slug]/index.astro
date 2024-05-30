@@ -1,0 +1,110 @@
+---
+import FormattedDate from "@/components/ui/FormattedDate.astro";
+import Prose from "@/components/ui/Prose.astro";
+import SidebarPost from "@/components/ui/Sidebar/SidebarPost.astro";
+import Layout from "@/layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import { getEntry } from "astro:content";
+import MessageBox from "@/components/ui/Buttons/MessageBox.astro";
+import { customComponents } from "@/utils/mdxConfig";
+import Divider from "@/components/ui/Divider.astro";
+
+const { slug } = Astro.params;
+console.log(slug);
+
+if(!slug) {
+    return {
+        status: 404,
+    };
+}
+
+const post = await getEntry("blog", slug);
+
+if (!post) {
+    return {
+        status: 404,
+    };
+}
+const { Content, headings } = await post.render();
+const author = await getEntry("authors", post.data.author.id);
+---
+
+<Layout
+title={post.data.title}
+description={post.data.description}
+>
+<main>
+    <article>
+        <header>
+            <div>
+                <h1>{post.data.title}</h1>
+                <div class="mt-3 text-sm flex flex-wrap items-center gap-4">
+                    <a href={`/blog/author/${author.id}`} >
+                        <img transition:name={author.data.name} src={author.data.avatar} alt={author.data.name} class="w-12 h-12 rounded-full" />
+                    </a>
+                    <div>
+                      <time class="capitalize text-gray-500" datetime="2024-03-26T13:33:00-05:00">
+                        <FormattedDate date={new Date(post.data.updatedAt)} />
+                    </time>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button aria-label="Compartir" class="text-gray-500">
+                    <Icon name="mdi:bookmark" class="w-8 h-8" />
+                </button>
+            </div>
+        </header>
+        <section>
+            <img transition:name={post.data.title} src={post.data.image} alt={post.data.title} class="w-full h-96 object-cover rounded-lg mb-8" />
+            <Prose>
+                <Content components={customComponents} />
+            </Prose>
+        </section>
+        <footer>
+            <Divider/>
+            <div class="giscus mt-10" />
+        </footer>
+    </article>
+    <SidebarPost />
+</main>
+</Layout>
+
+<style>
+    footer {
+        @apply mt-10;
+    }
+  article {
+    @apply w-full bg-white min-h-screen p-10 md:rounded-lg shadow-elevation flex-1;
+  }
+  main {
+    @apply md:py-12 w-full flex flex-col md:flex-row gap-8 mx-auto max-w-screen-xl;
+  }
+  aside {
+    @apply hidden md:block md:w-64 bg-red-500;
+  }
+  h1 {
+    @apply text-2xl
+  }
+  header {
+    @apply flex justify-between mb-7;
+  }
+</style>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="QuesoCaliente/el-laboratorio"
+        data-repo-id="R_kgDOL1i6fw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOL1i6f84CfDxJ"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="es"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>

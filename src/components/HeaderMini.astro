@@ -1,0 +1,81 @@
+---
+import { Icon } from "astro-icon/components";
+import DropDown from "./ui/DropDown/DropDown.astro";
+import DropDownTitle from "./ui/DropDown/DropDownTitle.astro";
+import DropDownLink from "./ui/DropDown/DropDownLink.astro";
+
+---
+
+<header>
+  <div class="navbar">
+    <button id="menu" class="navbar-item cursor-pointer">
+      <Icon class="text-white size-6" name="feather:menu" />
+    </button>
+    <a class="logo" href="/">
+      <h1 class="text-white text-md md:text-lg font-medium">quesocaliente.dev</h1>
+    </a>
+    <div class="navbar-item relative ml-auto md:ml-0">
+      <button id="dropdownButton" class="cursor-pointer transition-transform duration-500 ease-in-out">
+        <Icon class="text-white size-6" name="mdi:dots-vertical" />
+      </button>
+      <DropDown>
+        <DropDownTitle title="Panel de Control" />
+        <DropDownLink href="/legal-terms" title="Terminos y Condiciones" />
+        <DropDownLink href="/cookies" title="Aviso de Cookies" />
+      </DropDown>
+    </div>
+  </div>
+</header>
+
+<style>
+  header {
+    @apply bg-brand-bg relative;
+  }
+
+  .navbar {
+    @apply flex md:justify-between;
+    inset: 0 0 auto 0;
+  }
+
+  .navbar-item {
+    @apply flex px-5 items-center gap-3 h-16;
+  }
+
+  .hero {
+    @apply h-64 md:h-96 flex items-center justify-center;
+  }
+
+  .logo {
+    @apply flex justify-center items-center gap-3;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1))
+      drop-shadow(0 3px 1px rgba(0, 0, 0, 0.075))
+      drop-shadow(0 1px 5px rgba(0, 0, 0, 0.1))
+      drop-shadow(0 -1px 2px rgba(0, 0, 0, 0.075));
+  }
+</style>
+
+
+<script>
+
+  document.addEventListener('astro:page-load', () => {
+    const dropdownButton = document.querySelector('#dropdownButton') as HTMLButtonElement | null;
+	
+	const dropDownMenu = document.querySelector('.dropdown') as HTMLDivElement | null;
+	  if (dropdownButton && dropDownMenu) {
+      // Escuchar clics en todo el documento
+      document.addEventListener('click', (e) => {
+        if (!dropDownMenu.contains(e.target as Node) && !dropdownButton.contains(e.target as Node))  {
+          dropDownMenu.classList.remove('is-active');
+          dropdownButton.classList.remove('rotate-90');
+        }
+      });
+
+
+      dropdownButton.addEventListener('click', () => {
+      dropDownMenu.classList.toggle('is-active');
+      dropdownButton.classList.toggle('rotate-90');
+      });
+	  }
+  })
+
+</script>

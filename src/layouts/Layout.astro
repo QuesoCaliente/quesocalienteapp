@@ -1,29 +1,76 @@
 ---
+import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
+import HeaderMini from '@/components/HeaderMini.astro';
+import Seo from '@/components/Seo.astro';
+import Sidebar from '@/components/ui/Sidebar/Sidebar.astro';
+import { ViewTransitions } from 'astro:transitions';
 interface Props {
 	title: string;
+	description: string;
+	image?: string;
+	canonical?: string;
+	showHero?: boolean;
+
 }
 
-const { title } = Astro.props;
+const { title, description, image, canonical, showHero } = Astro.props;
+
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Blog de Tecnologia" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{title}</title>
+		<Seo
+			title={title}
+			description={description}
+			image={image}
+			canonical={canonical}
+
+		/>
+		<ViewTransitions />
 	</head>
-	<body>
-		<Header/>
-		<slot />
+	<body class="overflow-x-hidden">
+		<Sidebar/>
+		<div id="content" class="w-full transition-transform duration-500">
+			{showHero ? <Header transition:persist/> : <HeaderMini transition:persist/>}
+			<slot />
+			<Footer/>
+		</div>
 	</body>
 </html>
 <style is:global>
 	html {
-		font-family: system-ui, sans-serif;
+		font-family: 'Onest Variable', sans-serif;
 		background: #f2f2f2;
 	}
 </style>
+
+
+<script>
+	document.addEventListener('astro:page-load', async () => {
+	  const content = document.querySelector("#content") as HTMLDivElement;
+	const sidebar = document.querySelector("#sidebar") as HTMLDivElement;
+	const backdrop = document.querySelector("#sidebar-backdrop") as HTMLDivElement;
+  
+	const toggleSidebar = () => {
+	  sidebar.classList.toggle("-translate-x-[100%]");
+	  backdrop.classList.toggle("hidden");
+	  content.classList.toggle("translate-x-64");
+	};
+	const menu = document.querySelector("#menu") as HTMLDivElement;
+	menu.addEventListener("click", toggleSidebar);
+  
+	const { signIn, signOut } = await import("auth-astro/client")
+  
+	const loginButton = document.querySelector("#login") as HTMLButtonElement | null
+	const logoutButton = document.querySelector("#logout") as HTMLButtonElement | null
+  
+	if (loginButton)
+	loginButton.addEventListener("click", () => signIn("discord"))
+  
+	if (logoutButton)
+	logoutButton.addEventListener("click", () => signOut())
+
+	});
+  </script>

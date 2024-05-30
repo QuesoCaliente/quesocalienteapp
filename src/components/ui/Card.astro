@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type Props = CollectionEntry<"blog">["data"] & {
+    slug: string;
+};
+
+const { title, slug, image, tags, description } = Astro.props;
+---
+
+<article>
+    <div class="card-content">
+        <header>
+            <a href={slug} class="card-image">
+                <img transition:name={title} src={image}/>
+            </a>
+        </header>
+        <div class="card-body">
+            <h3 class="card-title">
+                {title}
+            </h3>
+            <p class="card-text line-clamp-2">
+                {description}
+            </p>
+            <div class="card-tags">
+                {tags.map((tag) => (
+                    <a href="" class="tag">#{tag}</a>
+                ))}
+            </div>
+            <footer>
+                <a href="" class="card-footer">
+                    
+                </a>
+            </footer>
+        </div>
+    </div>
+</article>
+
+
+<style>
+    article {
+        @apply bg-white rounded-lg overflow-hidden relative;
+        box-shadow: 0 4px 6px -1px rgb(17 24 39 / 10%), 0 2px 4px -1px rgb(17 24 39 / 5%);
+    }
+    .card-image img {
+        @apply w-full h-48 object-cover;
+    }
+    .card-body {
+        @apply p-7;
+    }
+    .card-title {
+        @apply font-medium ;
+    }
+    .card-text {
+        @apply text-gray-600 mt-2;
+    }
+    .card-tags {
+        @apply mt-2 flex gap-2;
+    }
+    .card-footer {
+        @apply mt-4 text-gray-600 flex items-center flex-wrap gap-1 capitalize;
+    }
+    .tag {
+        @apply text-yellow-700;
+    }
+    .card-body {
+        @apply p-7 text-gray-600
+    }
+
+
+</style>

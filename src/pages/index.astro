@@ -1,16 +1,23 @@
 ---
 import Bento from '@/components/sections/Bento.astro';
 import Layout from '../layouts/Layout.astro';
+import Experience from '@/components/sections/Experience.astro';
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout showHero title="quesocaliente.dev" description="Sitio web persona sobre tecnologia y desarrollo de software">
 	<main>
 		<Bento/>
+		<Experience/>
 		
 	</main>
 </Layout>
 
 <style>
-
+.main {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 2rem;
+	padding: 2rem;
+}
 
 </style>

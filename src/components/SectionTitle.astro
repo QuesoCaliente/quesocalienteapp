@@ -1,12 +1,13 @@
 ---
 interface Props {
-  title: string
   as?: string
 }
 
-const { title, as } = Astro.props
+const { as } = Astro.props
 const Tag = as || 'h1'
 ---
 
 
-<Tag class="text-2xl font-bold">{title}</Tag>
+<Tag class="text-2xl text-gray-950 font-bold py-6">
+  <slot/>
+</Tag>

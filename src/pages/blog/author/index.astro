@@ -1,0 +1,41 @@
+---
+import AuthorCard from "@/components/ui/Author/AuthorCard.astro";
+import SectionTitle from "@/components/ui/SectionTitle.astro";
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const authors = await getCollection("authors");
+---
+<Layout title="Autores" description="Lista de Autores que han escrito en el Blog">
+<main>
+    <div class="main-content">
+      <SectionTitle title="Autores" description="Lista de Autores que han escrito en el Blog" />
+      <section class="blog-list">
+  
+        {authors.map((author) => (
+          <AuthorCard id={author.id} {...author.data} />
+        ))
+      }
+        </section>
+    </div>
+</main>
+</Layout>
+
+<style>
+  .blog-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(min(100%,15rem),1fr));
+    gap: 1rem;
+  }
+  @media (max-width: 600px) {
+    .blog-list {
+      grid-template-columns: 1fr;
+    }
+  }
+  main {
+    @apply mt-20 mb-20;
+  }
+  .main-content {
+    @apply max-w-screen-xl lg:mx-auto mx-5 ;
+  }
+</style>

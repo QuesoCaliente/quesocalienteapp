@@ -1,46 +1,73 @@
 ---
-
-import {Icon} from 'astro-icon/components'
+import { Icon } from "astro-icon/components";
+import Particles from "./ui/Particles.astro";
 ---
 
-
-<header>
-    <div class="navbar">
-        <div class="navbar-item">
-            <Icon class="text-white size-6" name="feather:menu"/>
-        </div>
+<header class="header">
+  <Particles/>
+  <div class="navbar">
+    <button id="menu" class="navbar-item cursor-pointer">
+      <Icon class="text-white size-6" name="feather:menu" />
+    </button>
+    <div class="navbar-item">
+      
     </div>
-    <div class="hero">
-        <a class="logo" href="/">
-            <Icon class="text-white size-12 md:size-16" name="logo"/>
-            <h1 class="text-white text-md md:text-xl font-bold">quesocaliente.dev</h1>
-        </a>
-    </div>
+  </div>
+  <div class="hero">
+    <a class="logo" href="/">
+      <img id="logo-icon" src="images/logo.svg" alt="Queso Caliente Logo" />
+      <h1 id="title-logo" class="text-white text-md md:text-xl font-bold">quesocaliente.dev</h1>
+    </a>
+  </div>
 </header>
 
-
-
 <style>
-    header {
-        @apply bg-brand-bg relative;
-    }
+  header {
+    @apply bg-brand-bg relative overflow-hidden;
+  }
 
-    .navbar{
-        @apply absolute flex;
-        inset: 0 0 auto 0;
-        
-    } 
+  .navbar {
+    @apply absolute flex justify-between;
+    inset: 0 0 auto 0;
+  }
 
-    .navbar-item{
-        @apply flex px-5 items-center gap-3 h-16;
-    }   
+  .navbar-item {
+    @apply flex px-5 items-center gap-3 h-16;
+  }
 
-    .hero{
-        @apply h-64 md:h-96 flex items-center justify-center;
-    }
+  .hero {
+    @apply h-64 md:h-96 flex items-center justify-center;
+  }
 
-    .logo {
-        @apply flex flex-col justify-center items-center gap-3;
-        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .1)) drop-shadow(0 3px 1px rgba(0, 0, 0, .075)) drop-shadow(0 1px 5px rgba(0, 0, 0, .1)) drop-shadow(0 -1px 2px rgba(0, 0, 0, .075));
-    }
+  .logo {
+    @apply flex flex-col justify-center items-center gap-3;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1))
+      drop-shadow(0 3px 1px rgba(0, 0, 0, 0.075))
+      drop-shadow(0 1px 5px rgba(0, 0, 0, 0.1))
+      drop-shadow(0 -1px 2px rgba(0, 0, 0, 0.075));
+  }
 </style>
+
+
+<script>
+  // Esto se ejecuta en el cliente
+  document.addEventListener('astro:page-load', function () {
+    const uwuSearchParam = new URLSearchParams(window.location.search).get('uwu') ?? '';
+    if (uwuSearchParam === 'true' || uwuSearchParam === 'false') {
+      const booleanUwu = uwuSearchParam === 'true';
+      // Guardar el booleanUwu en el session storage
+      sessionStorage.setItem('uwu', booleanUwu.toString());
+    }
+
+    const uwu = sessionStorage.getItem('uwu') === 'true';
+    const logoIcon = document.getElementById('logo-icon') as HTMLImageElement | null;
+    const titleLogo = document.getElementById('title-logo') as HTMLHeadingElement | null;
+    if (logoIcon && titleLogo) {
+      logoIcon.src = `images/logo${uwu ? '-uwu' : ''}.svg`;
+      logoIcon.classList.toggle('w-60', uwu);
+      logoIcon.classList.toggle('lg:w-full', uwu);
+      titleLogo.classList.toggle('sr-only', uwu);
+
+    }
+  });
+</script>

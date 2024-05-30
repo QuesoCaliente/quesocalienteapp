@@ -1,38 +1,79 @@
 ---
+import { getLastBlogPost } from '@/core/blog/functions';
 import {Icon} from 'astro-icon/components';
+
+const lastPost  = await getLastBlogPost();
+
+const image = lastPost.data.image;
 ---
 
 
 <section>
-    <article class="col-span-12 sm:col-span-6 md:col-span-3 lg:col-span-2 row-span-2 bg-brand-bg relative">
-        <Icon class='absolute top-3 left-3 text-3xl' name='feather:github' />
+    <article class="col-span-12 group sm:col-span-6 md:col-span-3 lg:col-span-2 row-span-1 bg-brand-bg relative">
+        <a target="_blank" class="flex justify-center items-center w-full h-full relative" href="https://github.com/QuesoCaliente" title="Github QuesoCaliente">
+            <Icon class='hidden md:block absolute top-3 left-3 text-3xl' name='feather:github' />
+            <Icon class='opacity-0 group-hover:opacity-100 duration-300 ease-drop-out absolute top-3 right-3 text-3xl transition-all' name='mdi:external-link' />
         <h1>Visita mis repositorios</h1>
+        </a>
     </article>
-    <article class="col-span-12 sm:col-span-6 md:col-span-9 lg:col-span-7 row-span-2 bg-red-500 relative">
-        <Icon class='absolute top-3 left-3 text-3xl' name='feather:file' />
-        <h1>Mis Notas</h1>
+    <article class="col-span-12 group sm:col-span-6 md:col-span-9 lg:col-span-7 row-span-1 bg-red-700 relative patternsquare">
+        <a target="_blank" class="flex justify-center items-center w-full h-full relative z-[3]" href="https://asset-box-nine.vercel.app/" title="AssetBox">
+        <Icon class='hidden md:block absolute top-3 left-3 text-3xl' name='mdi:code-braces-box' />
+        <Icon class='opacity-0 group-hover:opacity-100 duration-300 ease-drop-out absolute top-3 right-3 text-3xl transition-all' name='mdi:external-link' />
+        <h1>AssetBox Recursos</h1>
+    </a>
     </article>
-    <article class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 row-span-3 bg-brand-linkedin relative">
-        <Icon class='absolute top-3 left-3 text-3xl' name='feather:linkedin' />
-        <h1>¿Quieres saber quien soy?</h1>
+    <article class="col-span-12 group sm:col-span-6 md:col-span-4 lg:col-span-3 lg:row-span-2 row-span-3 bg-brand-linkedin relative">
+        <a target="_blank" class="flex justify-center items-center w-full h-full relative" href="https://www.linkedin.com/in/briancifuentes/" title="Linkedin QuesoCaliente">
+            <Icon class='hidden md:block absolute top-3 left-3 text-3xl' name='feather:linkedin' />
+            <Icon class='opacity-0 group-hover:opacity-100 duration-300 ease-drop-out absolute top-3 right-3 text-3xl transition-all' name='mdi:external-link' />
+            <h1>Conectemos en Linkedin</h1>
+        </a>
     </article>
-    <article class="col-span-12 sm:col-span-6 md:col-span-8 lg:col-span-3 row-span-5 bg-red-500">
-        <h1>Nueva tendencia hacia el bento grid ¿de que se trata?</h1> 
+    <article class={`blogpost flex flex-col justify-center items-center text-gray-100 rounded-lg overflow-hidden col-span-12 sm:col-span-6 md:col-span-8 lg:col-span-3 sm:row-span-3 lg:row-span-1 row-span-3 bg-red-500`}>
+        <a href={`/blog/${lastPost.slug}`} title={lastPost.data.title}  class="relative h-full flex flex-col justify-end items-center">
+            <div 
+            transition:name={lastPost.data.title}
+            style={
+                {
+                    backgroundImage: `url(${image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    transform: 'scale(1.1)',
+                }
+            }
+            class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 z-[1]"></div>
+            <h1 class="z-[2] m-4 featured line-clamp-2">{lastPost.data.title}</h1> 
+        </a>
     </article>
-    <article class="col-span-12 lg:col-span-6 row-span-3 bg-red-600">
-        <h1>Hey! Soy QuesoCaliente</h1>
+    <article class="col-span-12 lg:col-span-6 row-span-1 bg-yellow-200 relative overflow-hidden patternfood p-4">
+        <img src="https://cdn.quesocaliente.dev/home%2Fvtuber.png" alt="queso" class="absolute z-[2] -right-56 md:block md:-top-[90%] lg:-top-20  pointer-events-none" />
+        <div class="relative z-[3] flex flex-col justify-start items-center gap-2">
+            <span class="text-gray-950 text-6xl md:8xl lg:text-8xl bg-yellow-200 p-2 rounded-lg">Hey!</span>
+        <h1 class="text-gray-950 bg-yellow-200 p-2 rounded-lg">Soy QuesoCaliente</h1>
+        <p class="text-gray-950 text-xl font-medium bg-yellow-200 p-2 rounded-lg">Desarrollador de Software</p>
+        </div>
     </article>
-    <article class="col-span-12 sm:col-span-6 md:col-span-3 row-span-2 bg-red-700">
-        <h1>Mira mi cv</h1>
+    <article class="col-span-12 group sm:col-span-6 md:col-span-12 lg:col-span-4 row-span-1 bg-brand-discord relative patternx">
+        <Icon class='hidden md:block absolute top-3 left-3 text-3xl' name='ic:baseline-discord' />
+        <Icon class='opacity-0 group-hover:opacity-100 duration-300 ease-drop-out absolute top-3 right-3 text-3xl transition-all' name='mdi:external-link' />
+        <a target="_blank" class="flex justify-center items-center w-full h-full relative" href="https://discord.gg/whjkMeTKRN" title="Laboratorio de Artefactos Futuristas">
+            <h1>Laboratorio de Artefactos Futuristas</h1>
+        </a>
     </article>
-    <article class="col-span-12 sm:col-span-6 md:col-span-9 lg:col-span-4 row-span-3 bg-red-800">
-        <h1>Unete al Discord para charlar</h1>
+    <article class="col-span-12 group sm:col-span-6  md:col-span-6 lg:col-span-4 row-span-1 bg-brand-twitch relative patternRain">
+        <Icon class='hidden md:block absolute top-3 left-3 text-3xl' name='mdi:twitch' />
+        <Icon class='opacity-0 group-hover:opacity-100 duration-300 ease-drop-out absolute top-3 right-3 text-3xl transition-all' name='mdi:external-link' />
+        <a target="_blank" class="flex justify-center items-center w-full h-full relative" href="https://twitch.tv/quesocaliente0" title="Twitch QuesoCaliente">
+            <h1>QuesoCaliente0</h1>
+        </a>
     </article>
-    <article class="col-span-12 md:col-span-6 lg:col-span-5 row-span-3 bg-red-900">
-        <h1>Diarias Genshin Impact !sr</h1>
-    </article>
-    <article class="col-span-12 md:col-span-3 row-span-1 bg-red-950">
-    </h1>@QuesoCaliente0</h1>
+    <article class="col-span-12 group md:col-span-6 lg:col-span-4 row-span-1 bg-brand-twitter relative patternTwitter">
+        <a target="_blank" class="flex justify-center items-center w-full h-full relative" href="https://twitter.com/quesocaliente0" title="Twitter QuesoCaliente">
+            <Icon class='hidden md:block absolute top-3 left-3 text-xl' name='feather:twitter' />
+            <Icon class='opacity-0 group-hover:opacity-100 duration-300 ease-drop-out absolute top-3 right-3 text-3xl transition-all' name='mdi:external-link' />
+            </h1>@QuesoCaliente0</h1>
+        </a>
     </article>
 </section>
 
@@ -42,10 +83,86 @@ import {Icon} from 'astro-icon/components';
     section {
         @apply grid grid-cols-12 gap-4 p-4 max-w-screen-xl mx-auto min-h-screen;
     }
-    article {
+    article:not(.blogpost) {
         @apply flex flex-col justify-center items-center text-gray-100 rounded-lg;
+    }
+    article a {
+        @apply p-4;
     }
     article h1 {
         @apply text-2xl text-center font-semibold;
     }
+    .featured::before {
+        content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-top: 50%;
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZC11Y2dnLWdlbmVyYXRlZCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwMDAiIHN0b3Atb3BhY2l0eT0iMCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwMCIgc3RvcC1vcGFjaXR5PSIxIi8+PC9saW5lYXJHcmFkaWVudD48cGF0aCBkPSJNMCAwaDF2MUgweiIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz48L3N2Zz4=);
+    background: -webkit-linear-gradient(top,rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+    background: linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+    opacity: .8;
+    z-index: -1; 
+    }
+
+    .patternx::before {
+        content: "";
+        position: absolute;
+        background-size: 40px 40px;
+        background-repeat: repeat;
+        z-index: 1;
+        height: 100%;
+        pointer-events: none;
+        opacity: 24%;
+        width: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%238e98ff' fill-opacity='1'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .patternRain::before {
+        content: "";
+        position: absolute;
+        background-size: 10px 10px;
+        background-repeat: repeat;
+        z-index: 1;
+        height: 100%;
+        pointer-events: none;
+        opacity: 24%;
+        width: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='12' height='16' viewBox='0 0 12 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 .99C4 .445 4.444 0 5 0c.552 0 1 .45 1 .99v4.02C6 5.555 5.556 6 5 6c-.552 0-1-.45-1-.99V.99zm6 8c0-.546.444-.99 1-.99.552 0 1 .45 1 .99v4.02c0 .546-.444.99-1 .99-.552 0-1-.45-1-.99V8.99z' fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    .patternTwitter::before {
+        content: "";
+        position: absolute;
+        background-size: 40px 40px;
+        background-repeat: repeat;
+        z-index: 1;
+        height: 100%;
+        pointer-events: none;
+        opacity: 24%;
+        width: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%238cd3ff' fill-opacity='1' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .patternfood::before {
+        content: "";
+        position: absolute;
+        background-size: 100px 100px;
+        background-repeat: repeat;
+        z-index: 1;
+        height: 100%;
+        
+        opacity:50%;
+        width: 100%;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='152' height='152' viewBox='0 0 152 152'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='temple' fill='%23d9cd71' fill-opacity='1'%3E%3Cpath d='M152 150v2H0v-2h28v-8H8v-20H0v-2h8V80h42v20h20v42H30v8h90v-8H80v-42h20V80h42v40h8V30h-8v40h-42V50H80V8h40V0h2v8h20v20h8V0h2v150zm-2 0v-28h-8v20h-20v8h28zM82 30v18h18V30H82zm20 18h20v20h18V30h-20V10H82v18h20v20zm0 2v18h18V50h-18zm20-22h18V10h-18v18zm-54 92v-18H50v18h18zm-20-18H28V82H10v38h20v20h38v-18H48v-20zm0-2V82H30v18h18zm-20 22H10v18h18v-18zm54 0v18h38v-20h20V82h-18v20h-20v20H82zm18-20H82v18h18v-18zm2-2h18V82h-18v18zm20 40v-18h18v18h-18zM30 0h-2v8H8v20H0v2h8v40h42V50h20V8H30V0zm20 48h18V30H50v18zm18-20H48v20H28v20H10V30h20V10h38v18zM30 50h18v18H30V50zm-2-40H10v18h18V10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");    }
+.patternsquare::before {
+    content: "";
+    position: absolute;
+    background-size: 20px 20px;
+    background-repeat: repeat;
+    z-index: 1;
+    height: 100%;
+    pointer-events: none;
+    opacity: 50%;
+    width: 100%;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='Artboard-5' fill='%23830101' fill-opacity='1' fill-rule='nonzero'%3E%3Cpath d='M6 18h12V6H6v12zM4 4h16v16H4V4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
 </style>
