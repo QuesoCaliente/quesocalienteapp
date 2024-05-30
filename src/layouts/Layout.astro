@@ -20,46 +20,69 @@ const { title, description, image, canonical, showHero } = Astro.props;
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<Seo
-			title={title}
-			description={description}
-			image={image}
-			canonical={canonical}
-
-		/>
-		<ViewTransitions />
-	</head>
-	<body class="overflow-x-hidden">
-		<Sidebar/>
-		<div id="content" class="w-full transition-transform duration-500">
-			{showHero ? <Header transition:persist/> : <HeaderMini transition:persist/>}
-			<slot />
-			<Footer/>
-		</div>
-	</body>
+<head>
+	<Seo
+		title={title}
+		description={description}
+		image={image}
+		canonical={canonical}
+	/>
+	<ViewTransitions />
+</head>
+<body class="overflow-x-hidden h-full">
+	<Sidebar/>
+	<div id="content" class="relative w-full h-full transition-transform duration-500">
+		{showHero ? <Header transition:persist/> : <HeaderMini transition:persist/>}
+		<slot />
+		<Footer/>
+	</div>
+</body>
 </html>
 <style is:global>
 	html {
 		font-family: 'Onest Variable', sans-serif;
 		background: #f2f2f2;
+		height: 100%;
+	}
+	body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	#content {
+		overflow-y: auto; /* Evita el redimensionamiento inesperado */
+	}
+	#sidebar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		height: 100%;
+		will-change: transform;
+	}
+	#sidebar-backdrop {
+		@apply fixed top-0 left-0 right-0 bottom-0 z-[9];
+		opacity: 0;
+		will-change: opacity;
+		transition: opacity 0.5s ease;
+	}
+	#sidebar-backdrop.active {
+		opacity: 1;
 	}
 </style>
 
-
-<script>
+<script is:inline>
 	document.addEventListener('astro:page-load', async () => {
-	  const content = document.querySelector("#content") as HTMLDivElement;
-	const sidebar = document.querySelector("#sidebar") as HTMLDivElement;
-	const backdrop = document.querySelector("#sidebar-backdrop") as HTMLDivElement;
-  
-	const toggleSidebar = () => {
-	  sidebar.classList.toggle("-translate-x-[100%]");
-	  backdrop.classList.toggle("hidden");
-	  content.classList.toggle("translate-x-64");
-	};
-	const menu = document.querySelector("#menu") as HTMLDivElement;
-	menu.addEventListener("click", toggleSidebar);
+		const content = document.querySelector("#content");
+		const sidebar = document.querySelector("#sidebar");
+		const backdrop = document.querySelector("#sidebar-backdrop");
 
+		const toggleSidebar = () => {
+			sidebar.classList.toggle("-translate-x-[100%]");
+			backdrop.classList.toggle("active");
+			content.classList.toggle("translate-x-64");
+		};
+		const menu = document.querySelector("#menu");
+		menu.addEventListener("click", toggleSidebar);
 	});
-  </script>
+</script>
