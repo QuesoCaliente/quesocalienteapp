@@ -60,17 +60,6 @@ const { title, description, image, canonical, showHero } = Astro.props;
 	};
 	const menu = document.querySelector("#menu") as HTMLDivElement;
 	menu.addEventListener("click", toggleSidebar);
-  
-	const { signIn, signOut } = await import("auth-astro/client")
-  
-	const loginButton = document.querySelector("#login") as HTMLButtonElement | null
-	const logoutButton = document.querySelector("#logout") as HTMLButtonElement | null
-  
-	if (loginButton)
-	loginButton.addEventListener("click", () => signIn("discord"))
-  
-	if (logoutButton)
-	logoutButton.addEventListener("click", () => signOut())
 
 	});
   </script>
