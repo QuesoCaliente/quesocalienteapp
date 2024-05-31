@@ -23,7 +23,7 @@ import SidebarItem from "./SidebarItem.astro";
 		</SidebarItem>
 	</nav>
 </div>
-<div id='sidebar-backdrop' class="hidden" aria-hidden="true"></div>
+<div id='sidebar-backdrop' aria-hidden="true"></div>
 
 <script is:inline>
 	document.addEventListener("astro:page-load", () => {
@@ -43,15 +43,6 @@ import SidebarItem from "./SidebarItem.astro";
 </script>
 
 <style>
-	#sidebar-backdrop {
-		@apply fixed top-0 left-0 right-0 bottom-0 z-[9];
-		opacity: 0;
-		will-change: opacity;
-		transition: opacity 0.5s ease;
-	}
-	#sidebar-backdrop.active {
-		opacity: 1;
-	}
 	.hidden {
 		display: none;
 	}
