@@ -76,18 +76,19 @@ const { title, description, image, canonical, showHero } = Astro.props;
 	}
 </style>
 
-<script is:inline>
+<script>
 	document.addEventListener('astro:page-load', async () => {
-		const content = document.querySelector("#content");
-		const sidebar = document.querySelector("#sidebar");
-		const backdrop = document.querySelector("#sidebar-backdrop");
+		const content = document.querySelector("#content") as HTMLElement;
+		const sidebar = document.querySelector("#sidebar") as HTMLElement;
+		const backdrop = document.querySelector("#sidebar-backdrop") as HTMLElement;
 
 		const toggleSidebar = () => {
 			sidebar.classList.toggle("-translate-x-[100%]");
 			backdrop.classList.toggle("active");
 			content.classList.toggle("translate-x-64");
+
 		};
-		const menu = document.querySelector("#menu");
+		const menu = document.querySelector("#menu") as HTMLElement;
 		menu.addEventListener("click", toggleSidebar);
 	});
 </script>

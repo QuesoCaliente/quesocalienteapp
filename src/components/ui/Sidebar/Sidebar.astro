@@ -25,18 +25,18 @@ import SidebarItem from "./SidebarItem.astro";
 </div>
 <div id='sidebar-backdrop' aria-hidden="true"></div>
 
-<script is:inline>
+<script>
 	document.addEventListener("astro:page-load", () => {
-		const content = document.querySelector("#content");
-		const sidebar = document.querySelector("#sidebar");
-		const sidebarBackdrop = document.querySelector("#sidebar-backdrop");
+		const content = document.querySelector("#content") as HTMLElement;
+		const sidebar = document.querySelector("#sidebar") as HTMLElement;
+		const sidebarBackdrop = document.querySelector("#sidebar-backdrop") as HTMLElement;
 
 		const toggleSidebar = () => {
 			sidebar.classList.toggle("-translate-x-[100%]");
 			sidebarBackdrop.classList.toggle("active");
 			content.classList.toggle("translate-x-64");
 		};
-		const closeMenu = document.querySelector("#closeMenu");
+		const closeMenu = document.querySelector("#closeMenu") as HTMLElement;
 		closeMenu.addEventListener("click", toggleSidebar);
 		sidebarBackdrop.addEventListener("click", toggleSidebar);
 	});
