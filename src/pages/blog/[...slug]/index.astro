@@ -11,19 +11,13 @@ import Divider from "@/components/ui/Divider.astro";
 const { slug } = Astro.params;
 console.log(slug);
 
-if(!slug) {
-    return {
-        status: 404,
-    };
-}
+if(!slug) return Astro.redirect("/404");
+
 
 const post = await getEntry("blog", slug);
 
-if (!post) {
-    return {
-        status: 404,
-    };
-}
+if (!post) return Astro.redirect("/404");
+
 const { Content } = await post.render();
 const author = await getEntry("authors", post.data.author.id);
 ---

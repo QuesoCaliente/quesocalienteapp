@@ -4,7 +4,7 @@ import SidebarItem from "./SidebarItem.astro";
 ---
 <div
 	id="sidebar"
-	class="fixed -translate-x-[100%] top-0 left-0 bottom-0 z-10 h-screen w-full bg-[#1f1f1f] text-white transition-transform duration-500 sm:w-[256px]"
+	class="fixed top-0 left-0 bottom-0 z-10  w-64 bg-[#1f1f1f] text-white"
 >
 	<div class="flex justify-end p-5">
 		<Icon
@@ -28,11 +28,10 @@ import SidebarItem from "./SidebarItem.astro";
 <script>
 	document.addEventListener("astro:page-load", () => {
 		const content = document.querySelector("#content") as HTMLElement;
-		const sidebar = document.querySelector("#sidebar") as HTMLElement;
 		const sidebarBackdrop = document.querySelector("#sidebar-backdrop") as HTMLElement;
+		const sidebar = document.querySelector("#sidebar") as HTMLElement;
 
 		const toggleSidebar = () => {
-			sidebar.classList.toggle("-translate-x-[100%]");
 			sidebarBackdrop.classList.toggle("active");
 			content.classList.toggle("translate-x-64");
 		};

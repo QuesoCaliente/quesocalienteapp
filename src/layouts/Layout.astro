@@ -29,9 +29,9 @@ const { title, description, image, canonical, showHero } = Astro.props;
 	/>
 	<ViewTransitions />
 </head>
-<body class="overflow-x-hidden h-full">
+<body class="lg:overflow-x-hidden h-full">
 	<Sidebar/>
-	<div id="content" class="relative w-full h-full transition-transform duration-500">
+	<div id="content" class="relative w-full h-full bg-[#f2f2f2] z-20 transition-transform duration-500 will-change-transform">
 		{showHero ? <Header transition:persist/> : <HeaderMini transition:persist/>}
 		<slot />
 		<Footer/>
@@ -44,24 +44,13 @@ const { title, description, image, canonical, showHero } = Astro.props;
 		background: #f2f2f2;
 		height: 100%;
 	}
+	main {
+		background: #f2f2f2;
+	}
 	body {
 		height: 100%;
 		margin: 0;
 		padding: 0;
-	}
-	#content {
-		overflow-y: auto; /* Evita el redimensionamiento inesperado */
-		width: 100%;
-		height: 100%;
-		will-change: transform;
-	}
-	#sidebar {
-		position: fixed;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		height: 100%;
-		will-change: transform;
 	}
 	#sidebar-backdrop {
 		@apply fixed top-0 left-0 right-0 w-full h-screen bottom-0 z-[9];
@@ -74,6 +63,13 @@ const { title, description, image, canonical, showHero } = Astro.props;
 		opacity: 1;
 		display: block;
 	}
+
+	@media (max-width: 991px) {
+    body, html {
+        overflow: auto;
+    }
+		
+	}
 </style>
 
 <script>
@@ -83,7 +79,6 @@ const { title, description, image, canonical, showHero } = Astro.props;
 		const backdrop = document.querySelector("#sidebar-backdrop") as HTMLElement;
 
 		const toggleSidebar = () => {
-			sidebar.classList.toggle("-translate-x-[100%]");
 			backdrop.classList.toggle("active");
 			content.classList.toggle("translate-x-64");
 
