@@ -48,12 +48,11 @@ const { title, description, image, canonical, showHero } = Astro.props;
 		background: #f2f2f2;
 	}
 	body {
-		height: 100%;
 		margin: 0;
 		padding: 0;
 	}
 	#sidebar-backdrop {
-		@apply fixed top-0 left-0 right-0 w-full h-screen bottom-0 z-[9];
+		@apply fixed top-0 left-0 right-0 w-full h-screen bottom-0 z-[21];
 		opacity: 0;
 		display: none;
 		will-change: opacity;
@@ -75,7 +74,6 @@ const { title, description, image, canonical, showHero } = Astro.props;
 <script>
 	document.addEventListener('astro:page-load', async () => {
 		const content = document.querySelector("#content") as HTMLElement;
-		const sidebar = document.querySelector("#sidebar") as HTMLElement;
 		const backdrop = document.querySelector("#sidebar-backdrop") as HTMLElement;
 
 		const toggleSidebar = () => {
