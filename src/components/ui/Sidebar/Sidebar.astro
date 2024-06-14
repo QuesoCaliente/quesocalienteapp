@@ -29,10 +29,10 @@ import SidebarItem from "./SidebarItem.astro";
 	document.addEventListener("astro:page-load", () => {
 		const content = document.querySelector("#content") as HTMLElement;
 		const sidebarBackdrop = document.querySelector("#sidebar-backdrop") as HTMLElement;
-		const sidebar = document.querySelector("#sidebar") as HTMLElement;
 
 		const toggleSidebar = () => {
 			sidebarBackdrop.classList.toggle("active");
+			sidebarBackdrop.classList.toggle("translate-x-64");
 			content.classList.toggle("translate-x-64");
 		};
 		const closeMenu = document.querySelector("#closeMenu") as HTMLElement;
