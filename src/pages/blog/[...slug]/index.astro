@@ -7,9 +7,9 @@ import { Icon } from "astro-icon/components";
 import { getEntry } from "astro:content";
 import { customComponents } from "@/utils/mdxConfig";
 import Divider from "@/components/ui/Divider.astro";
+import ReadingTime from '@/components/ui/Author/ReadingTime.astro';
 
 const { slug } = Astro.params;
-console.log(slug);
 
 if(!slug) return Astro.redirect("/404");
 
@@ -41,6 +41,7 @@ description={post.data.description}
                         <FormattedDate date={new Date(post.data.updatedAt)} />
                     </time>
                     </div>
+                    <ReadingTime text={post.body}>
                 </div>
             </div>
             <div>

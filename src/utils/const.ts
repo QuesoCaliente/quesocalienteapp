@@ -24,6 +24,7 @@ export const CATEGORIES = [
   { id: 23, name: "Ruby on Rails" },
   { id: 24, name: "PHP" },
   { id: 25, name: "Inteligencia Artificial" },
+  { id: 26, name: "Utilidades" },
 ] as const;
 
 export const CATEGORIES_NAMES = CATEGORIES.map((category) => category.name) as [
