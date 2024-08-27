@@ -1,12 +1,20 @@
 ---
 interface Props {
     title: string;
+    sticky?: boolean;
+    showMobile?: boolean;
 }
-const { title } = Astro.props;
+const { title, sticky, showMobile=true } = Astro.props;
+
+const widgetClasses = [
+    'widget',
+    sticky ? 'sticky top-6' : '',
+    !showMobile ? 'hidden md:block' : '',
+].join(' ');
 ---
 
 
-<div class="widget">
+<div class={`widget ${widgetClasses}`}>
     <div class="widget-title">
         <span>{title}</span>
     </div>

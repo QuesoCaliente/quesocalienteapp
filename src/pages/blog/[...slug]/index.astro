@@ -18,7 +18,7 @@ const post = await getEntry("blog", slug);
 
 if (!post) return Astro.redirect("/404");
 
-const { Content } = await post.render();
+const { Content, headings } = await post.render();
 const author = await getEntry("authors", post.data.author.id);
 ---
 
@@ -61,7 +61,7 @@ description={post.data.description}
             <div class="giscus mt-10" />
         </footer>
     </article>
-    <SidebarPost />
+    <SidebarPost headings={headings} />
 </main>
 </Layout>
 
