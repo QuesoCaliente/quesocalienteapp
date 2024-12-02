@@ -1,157 +1,154 @@
 ---
-import Footer from '@/components/Footer.astro';
-import Header from '@/components/Header.astro';
-import HeaderMini from '@/components/HeaderMini.astro';
-import Seo from '@/components/Seo.astro';
-import Sidebar from '@/components/ui/Sidebar/Sidebar.astro';
-import { ViewTransitions } from 'astro:transitions';
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import HeaderMini from "@/components/HeaderMini.astro";
+import Seo from "@/components/Seo.astro";
+import Sidebar from "@/components/ui/Sidebar/Sidebar.astro";
+import { ViewTransitions } from "astro:transitions";
 interface Props {
-	title: string;
-	description: string;
-	image?: string;
-	canonical?: string;
-	showHero?: boolean;
-
+  title: string;
+  description: string;
+  image?: string;
+  canonical?: string;
+  showHero?: boolean;
 }
 
 const { title, description, image, canonical, showHero } = Astro.props;
-
 ---
 
 <!doctype html>
 <html lang="es">
-<head>
-	<Seo
-		title={title}
-		description={description}
-		image={image}
-		canonical={canonical}
-	/>
-	<ViewTransitions />
-</head>
-<body class="lg:overflow-x-hidden h-full">
-	<Sidebar/>
-	<div id="content" class="relative w-full h-full bg-[#f2f2f2] z-20 transition-transform duration-500 will-change-transform">
-		{showHero ? <Header transition:persist/> : <HeaderMini transition:persist/>}
-		<slot />
-		<Footer/>
-	</div>
-</body>
+  <head>
+    <Seo
+      title={title}
+      description={description}
+      image={image}
+      canonical={canonical}
+    />
+    <ViewTransitions />
+  </head>
+  <body class="lg:overflow-x-hidden h-full">
+    <!-- <Sidebar /> -->
+    <div
+      id="content"
+      class="relative w-full h-full bg-[#0a0a0a] z-20 transition-transform duration-500 will-change-transform"
+    >
+      <slot />
+      <Footer />
+    </div>
+  </body>
 </html>
 <style is:global>
-	html {
-		font-family: 'Onest Variable', sans-serif;
-		background: #f2f2f2;
-        scroll-behavior: smooth;
-	}
-	main {
-		background: #f2f2f2;
-	}
-	body {
-		margin: 0;
-		padding: 0;
-	}
-	#sidebar-backdrop {
-		@apply fixed top-0 left-0 right-0 w-full h-screen bottom-0 z-[21];
-		opacity: 0;
-		display: none;
-		will-change: opacity;
-		transition: opacity 0.5s ease;
-	}
-	#sidebar-backdrop.active {
-		opacity: 1;
-		display: block;
-	}
+  html {
+    font-family: "Onest Variable", sans-serif;
+    background: #0a0a0a;
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  #sidebar-backdrop {
+    @apply fixed top-0 left-0 right-0 w-full h-screen bottom-0 z-[21];
+    opacity: 0;
+    display: none;
+    will-change: opacity;
+    transition: opacity 0.5s ease;
+  }
+  #sidebar-backdrop.active {
+    opacity: 1;
+    display: block;
+  }
 
-	@media (max-width: 991px) {
-    body, html {
-        overflow: auto;
+  @media (max-width: 991px) {
+    body,
+    html {
+      overflow: auto;
     }
-		
-	}
+  }
 </style>
 
 <script>
-	document.addEventListener('astro:page-load', async () => {
-		const content = document.querySelector("#content") as HTMLElement;
-		const sidebarBackdrop = document.querySelector("#sidebar-backdrop") as HTMLElement;
+  document.addEventListener("astro:page-load", async () => {
+    const content = document.querySelector("#content") as HTMLElement;
+    const sidebarBackdrop = document.querySelector(
+      "#sidebar-backdrop"
+    ) as HTMLElement;
 
-		const toggleSidebar = () => {
-			sidebarBackdrop.classList.toggle("active");
-			sidebarBackdrop.classList.toggle("translate-x-64");
-			content.classList.toggle("translate-x-64");
-
-		};
-		const menu = document.querySelector("#menu") as HTMLElement;
-		menu.addEventListener("click", toggleSidebar);
-	});
+    const toggleSidebar = () => {
+      sidebarBackdrop.classList.toggle("active");
+      sidebarBackdrop.classList.toggle("translate-x-64");
+      content.classList.toggle("translate-x-64");
+    };
+    const menu = document.querySelector("#menu") as HTMLElement;
+    menu.addEventListener("click", toggleSidebar);
+  });
 </script>
 
-
 <style is:global>
-    pre > code {
-        display: grid; /*  this is way the line will span whole width of `code` component */
-        padding: 1.5rem 0;
-        background-color: #1E293B;
-        border-radius: 0.5rem;
-    }
-     pre > code [data-line] {
-        border-left: 0.5rem solid transparent;
-        padding: 0 0.5rem;
-    }
-     pre > code .highlighted {
-        background-color: #2e4c35;
-        border-color: #469458;
-    }
-    /** 
+  pre > code {
+    display: grid; /*  this is way the line will span whole width of `code` component */
+    padding: 1.5rem 0;
+    background-color: #1e293b;
+    border-radius: 0.5rem;
+  }
+  pre > code [data-line] {
+    border-left: 0.5rem solid transparent;
+    padding: 0 0.5rem;
+  }
+  pre > code .highlighted {
+    background-color: #2e4c35;
+    border-color: #469458;
+  }
+  /** 
      *  data-line-numbers will be enabled on markdown  
      *  with `showLineNumbers` meta string on it
      */
-     pre > code[data-line-numbers] {
-        counter-reset: line;
-    }
-     pre > code[data-line-numbers] > [data-line]::before {
-        counter-increment: line;
-        content: counter(line);
-        display: inline-block;
-        margin-right: 2rem;
-        width: 1rem;
-        text-align: right;
-        color: #7ca2dfad;
-    }
-     pre > code > [data-line]::before {
-        content: "";
-        display: inline-block;
-        width: 1rem;
-        text-align: right;
-    }
- 
-    /** 
+  pre > code[data-line-numbers] {
+    counter-reset: line;
+  }
+  pre > code[data-line-numbers] > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    margin-right: 2rem;
+    width: 1rem;
+    text-align: right;
+    color: #7ca2dfad;
+  }
+  pre > code > [data-line]::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    text-align: right;
+  }
+
+  /** 
      *  we'll need to adjust the space required 
      *  the number depending on the number of digits 
      */
-     pre > code[data-line-numbers-max-digits="2"] > [data-line]::before {
-        width: 2rem;
-    }
- 
-    pre > code[data-line-numbers-max-digits="3"] > [data-line]::before {
-        width: 3rem;
-    }
- 
-    section [data-rehype-pretty-code-fragment]{
-        position: relative;
-    }
-    section [data-rehype-pretty-code-title] {
-        position: relative;
-        border-top-left-radius: 0.5rem;
-        border-top-right-radius: 0.5rem;
-        background-color: #161f2c;
-        color:#9abcf3ec;
-        padding: 0.5rem 1rem;
-    }
+  pre > code[data-line-numbers-max-digits="2"] > [data-line]::before {
+    width: 2rem;
+  }
 
-	section code > [data-highlighted-line] {
-		background-color: #9abcf336;
-		border-color: #6990cc
-	}
+  pre > code[data-line-numbers-max-digits="3"] > [data-line]::before {
+    width: 3rem;
+  }
+
+  section [data-rehype-pretty-code-fragment] {
+    position: relative;
+  }
+  section [data-rehype-pretty-code-title] {
+    position: relative;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    background-color: #161f2c;
+    color: #9abcf3ec;
+    padding: 0.5rem 1rem;
+  }
+
+  section code > [data-highlighted-line] {
+    background-color: #9abcf336;
+    border-color: #6990cc;
+  }
 </style>

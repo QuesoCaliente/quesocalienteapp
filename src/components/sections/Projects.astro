@@ -1,45 +1,52 @@
 ---
-import SectionTitle from '../SectionTitle.astro'
-import ProjectCard from '../ui/ProjectCard.astro'
+import SectionTitle from "../SectionTitle.astro";
+import Button from "../ui/Buttons/Button.astro";
+import ProjectCard from "../ui/ProjectCard.astro";
 ---
 
-
 <section class="section">
-    <SectionTitle>
-        Proyectos
-    </SectionTitle>
-    <div class="projects">
-        <ProjectCard
-        title="Tic Tac Toe"
-        description="Juego de gato desarrollado con reactjs"
-        link="https://tictactoe-lake-six.vercel.app/"
-        image="/images/projects/tictactoe/image1.png"
-        github='https://github.com/QuesoCaliente/tictactoe'
+  <SectionTitle> Proyectos </SectionTitle>
+  <div class="projects">
+    <ProjectCard
+      title="Tic Tac Toe"
+      description="Juego de gato desarrollado con reactjs"
+      link="https://tictactoe-lake-six.vercel.app/"
+      image="/images/projects/tictactoe/image1.png"
+      github="https://github.com/QuesoCaliente/tictactoe"
     />
     <ProjectCard
-        reverse
-        title="Pixelate"
-        description="Aplicación para pixelar imágenes desarrollado con nextjs para una hackaton"
-        link="https://pixelate-nine.vercel.app/"
-        image="/images/projects/pixelate/image1.png"
-        github='https://github.com/QuesoCaliente/pixelate'
+      reverse
+      title="Pixelate"
+      description="Aplicación para pixelar imágenes desarrollado con nextjs para una hackaton"
+      link="https://pixelate-nine.vercel.app/"
+      image="/images/projects/pixelate/image1.png"
+      github="https://github.com/QuesoCaliente/pixelate"
     />
     <ProjectCard
-        title="Pomodoro"
-        description="Aplicación para gestionar el tiempo con la técnica pomodoro"
-        link="https://pomodoro-nine-pi.vercel.app/"
-        image="/images/projects/pomodoro/image1.png"
-        github='https://github.com/QuesoCaliente/pomodoro'
+      title="Pomodoro"
+      description="Aplicación para gestionar el tiempo con la técnica pomodoro"
+      link="https://pomodoro-nine-pi.vercel.app/"
+      image="/images/projects/pomodoro/image1.png"
+      github="https://github.com/QuesoCaliente/pomodoro"
     />
-    </div>
+    <ProjectCard
+      title="Pomodoro"
+      description="Aplicación para gestionar el tiempo con la técnica pomodoro"
+      link="https://pomodoro-nine-pi.vercel.app/"
+      image="/images/projects/pomodoro/image1.png"
+      github="https://github.com/QuesoCaliente/pomodoro"
+    />
+  </div>
+  <Button iconPosition="right" icon="mdi:chevron-right" radius="lg"
+    >Mostrar Todos</Button
+  >
 </section>
 
-
 <style>
-    .section {
-        @apply max-w-screen-xl mx-auto px-4 py-8;
-    }
-    .projects {
-        @apply grid grid-cols-1 gap-5;
-    }
+  .section {
+    @apply max-w-screen-xl mx-auto px-4 flex flex-col gap-6 items-start;
+  }
+  .projects {
+    @apply grid grid-cols-3 gap-5;
+  }
 </style>

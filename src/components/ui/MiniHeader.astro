@@ -1,0 +1,36 @@
+---
+import { Icon } from "astro-icon/components";
+import Particles from "./Particles.astro";
+import SocialHero from "./SocialHero.astro";
+---
+
+<header class="header">
+  <button id="menu" class="navbar-item cursor-pointer hidden">
+    <span class="sr-only">Menu</span>
+    <Icon class="text-white size-6" name="feather:menu" />
+  </button>
+  <a class="logo" href="/">
+    <img
+      class="size-9"
+      id="logo-icon"
+      src="images/logo.svg"
+      alt="Queso Caliente Logo"
+    />
+    <h1 id="title-logo" class="text-white text-md md:text-xl font-bold">
+      QuesoCaliente
+    </h1>
+  </a>
+  <SocialHero />
+</header>
+
+<style>
+  header {
+    @apply flex justify-between gap-8 relative overflow-hidden max-w-screen-xl mx-auto px-11 py-6 rounded-lg my-8;
+    backdrop-filter: blur(2px);
+    background-color: #0a0a0ab3;
+    border: 0.2px solid #50536d;
+  }
+  .logo {
+    @apply flex  items-center gap-3;
+  }
+</style>

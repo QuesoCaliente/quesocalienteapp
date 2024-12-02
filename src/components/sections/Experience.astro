@@ -4,40 +4,37 @@ import SectionTitle from "../SectionTitle.astro";
 ---
 
 <section class="section">
-    <SectionTitle>
-        Experiencia
-    </SectionTitle>
-    <div class="experience-container">
-        <ExperienceItem
-        className="md:col-span-2 border-t-8 border-yellow-500"
-            title="Belray"
-            footer="2022 - Actualidad"
-            icon="mdi:alpha-b-box-outline"
-            description="Mantener y asegurar la calidad de las interfaces de las aplicaciones, con un enfoque centrado en el usuario. Garantizar la creación de interfaces limpias y funcionales que proporcionen una experiencia óptima de navegación."
-        />
-        <ExperienceItem
-        title="Desarrollador Full Stack - ElectroAlegria"
-        footer="2022"
-        className="border-l-8 border-yellow-500"
-        icon="mdi:alpha-d-box-outline"
-        description="Desarrollo de Sistema para gestión de facturas y ordenes de trabajo interna"
-        />
-        <ExperienceItem
-        title="Freelance - Scraping y automatización de procesos"
-        footer="Agosto 2019 - Agosto 2021"
-        icon="mdi:alpha-f-box-outline"
-        className="border-b-8 border-yellow-500"
-        description="Desarrollo de aplicaciones para la automatización de procesos, extracción de datos y análisis de información. Utilizando herramientas como Python, Selenium, Scrapy, Pandas, entre otras."
+  <SectionTitle> Experiencia </SectionTitle>
+  <div class="experience-container">
+    <ExperienceItem
+      className="md:col-span-2 border-t-8 border-yellow-500"
+      title="Belray"
+      footer="2022 - Actualidad"
+      icon="mdi:alpha-b-box-outline"
+      description="Mantener y asegurar la calidad de las interfaces de las aplicaciones, con un enfoque centrado en el usuario. Garantizar la creación de interfaces limpias y funcionales que proporcionen una experiencia óptima de navegación."
     />
-    </div>
+    <ExperienceItem
+      title="Desarrollador Full Stack - ElectroAlegria"
+      footer="2022"
+      className="border-l-8 border-yellow-500"
+      icon="mdi:alpha-d-box-outline"
+      description="Desarrollo de Sistema para gestión de facturas y ordenes de trabajo interna"
+    />
+    <ExperienceItem
+      title="Freelance - Scraping y automatización de procesos"
+      footer="Agosto 2019 - Agosto 2021"
+      icon="mdi:alpha-f-box-outline"
+      className="border-b-8 border-yellow-500"
+      description="Desarrollo de aplicaciones para la automatización de procesos, extracción de datos y análisis de información. Utilizando herramientas como Python, Selenium, Scrapy, Pandas, entre otras."
+    />
+  </div>
 </section>
 
-
 <style>
-    .section {
-        @apply max-w-screen-xl mx-auto px-4 py-8;
-    }
-    .experience-container {
-        @apply grid grid-cols-1 gap-4 w-full md:grid-cols-2;
-    }
+  .section {
+    @apply max-w-screen-xl mx-auto px-4 pb-[60px];
+  }
+  .experience-container {
+    @apply grid grid-cols-1 gap-4 w-full md:grid-cols-2;
+  }
 </style>

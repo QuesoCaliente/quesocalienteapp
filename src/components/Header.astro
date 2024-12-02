@@ -4,27 +4,26 @@ import Particles from "./ui/Particles.astro";
 ---
 
 <header class="header">
-  <Particles/>
+  <Particles />
   <div class="navbar">
-    <button id="menu" class="navbar-item cursor-pointer">
-      <span class="sr-only">Menu</span>
-      <Icon class="text-white size-6" name="feather:menu" />
-    </button>
-    <div class="navbar-item">
-      
-    </div>
+    <div class="navbar-item"></div>
   </div>
   <div class="hero">
     <a class="logo" href="/">
       <img id="logo-icon" src="images/logo.svg" alt="Queso Caliente Logo" />
-      <h1 id="title-logo" class="text-white text-md md:text-xl font-bold">quesocaliente.dev</h1>
+      <h1 id="title-logo" class="text-white text-md md:text-xl font-bold">
+        quesocaliente.dev
+      </h1>
     </a>
   </div>
 </header>
 
 <style>
   header {
-    @apply bg-brand-bg relative overflow-hidden;
+    @apply relative overflow-hidden;
+    backdrop-filter: blur(10px);
+    background-color: #0a0a0ab3;
+    border: 0.2px solid #50536d;
   }
 
   .navbar {
@@ -37,7 +36,7 @@ import Particles from "./ui/Particles.astro";
   }
 
   .hero {
-    @apply h-64 md:h-96 flex items-center justify-center;
+    @apply h-64 md:h-36 flex items-center justify-center;
   }
 
   .logo {
@@ -49,26 +48,29 @@ import Particles from "./ui/Particles.astro";
   }
 </style>
 
-
 <script>
   // Esto se ejecuta en el cliente
-  document.addEventListener('astro:page-load', function () {
-    const uwuSearchParam = new URLSearchParams(window.location.search).get('uwu') ?? '';
-    if (uwuSearchParam === 'true' || uwuSearchParam === 'false') {
-      const booleanUwu = uwuSearchParam === 'true';
+  document.addEventListener("astro:page-load", function () {
+    const uwuSearchParam =
+      new URLSearchParams(window.location.search).get("uwu") ?? "";
+    if (uwuSearchParam === "true" || uwuSearchParam === "false") {
+      const booleanUwu = uwuSearchParam === "true";
       // Guardar el booleanUwu en el session storage
-      sessionStorage.setItem('uwu', booleanUwu.toString());
+      sessionStorage.setItem("uwu", booleanUwu.toString());
     }
 
-    const uwu = sessionStorage.getItem('uwu') === 'true';
-    const logoIcon = document.getElementById('logo-icon') as HTMLImageElement | null;
-    const titleLogo = document.getElementById('title-logo') as HTMLHeadingElement | null;
+    const uwu = sessionStorage.getItem("uwu") === "true";
+    const logoIcon = document.getElementById(
+      "logo-icon"
+    ) as HTMLImageElement | null;
+    const titleLogo = document.getElementById(
+      "title-logo"
+    ) as HTMLHeadingElement | null;
     if (logoIcon && titleLogo) {
-      logoIcon.src = `images/logo${uwu ? '-uwu' : ''}.svg`;
-      logoIcon.classList.toggle('w-60', uwu);
-      logoIcon.classList.toggle('lg:w-full', uwu);
-      titleLogo.classList.toggle('sr-only', uwu);
-
+      logoIcon.src = `images/logo${uwu ? "-uwu" : ""}.svg`;
+      logoIcon.classList.toggle("w-60", uwu);
+      logoIcon.classList.toggle("lg:w-full", uwu);
+      titleLogo.classList.toggle("sr-only", uwu);
     }
   });
 </script>
