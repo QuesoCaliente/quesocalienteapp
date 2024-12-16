@@ -1,0 +1,28 @@
+---
+import Button from "../ui/Buttons/Button.astro";
+---
+
+<section>
+  <h1 class="text-title text-5xl text-balance max-w-2xl relative z-[2]">
+    Trabajemos juntos en tu proximo proyecto
+  </h1>
+  <Button radius="sm" class="z-[2]">¡Hablemos!</Button>
+</section>
+
+<style>
+  section {
+    @apply flex flex-col items-center justify-center text-center dark:bg-[#0c0c0d] h-[550px] max-w-screen-xl mx-auto w-full gap-10 relative overflow-hidden mb-[60px];
+    border: 1px solid #292929;
+  }
+  section::before {
+    content: "";
+    position: absolute;
+    background-repeat: repeat;
+    z-index: 1;
+    height: 100%;
+    pointer-events: none;
+    opacity: 50%;
+    width: 100%;
+    background-image: url("/images/pattern-cheese.svg");
+  }
+</style>

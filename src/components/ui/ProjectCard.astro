@@ -27,11 +27,18 @@ const { title, link, image, description, github, reverse } = Astro.props;
         alt={title}
         class="w-full rounded-t-lg aspect-square object-cover grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out"
       />
-      <Badge
-        title="Github"
-        icon="mdi:github"
-        styles="bg-black text-white absolute top-8 right-8"
-      />
+      <a
+        href={github}
+        class="absolute top-8 right-8 z-[2] group"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Badge
+          title="Github"
+          icon="mdi:github"
+          styles="bg-[#0c0c0d] text-white group-hover:bg-white group-hover:text-black transition-colors duration-300 ease-in-out"
+        />
+      </a>
     </div>
 
     <div class="flex flex-1 flex-col justify-between p-12 gap-3">
@@ -39,7 +46,7 @@ const { title, link, image, description, github, reverse } = Astro.props;
       <p class="text-gray-500 dark:text-gray-400 text-xl">{description}</p>
       <span class="text-primary font-semibold text-xl flex items-center gap-2"
         >Ir al proyecto <Icon
-          class="group-hover:-rotate-45 transition-transform duration-300 ease-in-out"
+          class="group-hover:-rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300 ease-in-out"
           name="mdi:arrow-right-circle-outline"
         /></span
       >

@@ -11,7 +11,7 @@ interface ButtonProps {
     | "warning"
     | "danger";
   size?: "default" | "sm" | "lg" | "full" | "icon";
-  radius?: "none" | "lg" | "xl" | "xxl" | "full" | string;
+  radius?: "none" | "sm" | "lg" | "xl" | "xxl" | "full" | string;
   class?: string;
   type?: "button" | "submit" | "reset";
   href?: string;
@@ -112,6 +112,7 @@ const sizeClasses = {
 // Clases por radio
 const radiusClasses = {
   none: "rounded-none",
+  sm: "rounded-sm",
   lg: "rounded-xl",
   xl: "rounded-2xl",
   xxl: "rounded-4xl",

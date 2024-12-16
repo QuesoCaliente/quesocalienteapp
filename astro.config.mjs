@@ -3,6 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import vercel from "@astrojs/vercel/serverless";
 import { seoConfig } from "./src/utils/seoConfig";
+import react from '@astrojs/react';
 
 import mdx from "@astrojs/mdx";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -14,7 +15,7 @@ const options = {
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), icon(), mdx()],
+  integrations: [tailwind(), icon(), mdx(), react()],
   output: "server",
   adapter: vercel(),
   site: seoConfig.baseURL,

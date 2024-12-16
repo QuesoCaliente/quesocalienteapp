@@ -1,0 +1,19 @@
+.mountain {
+  @apply text-gray-400;
+  mask: url("../../../../public/mountain.svg") no-repeat center;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  width: 100%;
+  height: 100%;
+  background-color: currentColor;
+  aspect-ratio: 16 / 9;
+}
+
+.experienceListContainer {
+  border: 1px solid #292929;
+  @apply lg:absolute top-0 right-0 bg-[#0c0c0c] w-full lg:w-96 p-6 opacity-75;
+  border: 1px solid #292929;
+  .experienceListItem {
+    @apply bg-[#292929] w-full lg:w-52 px-4 py-2 rounded-lg text-white flex-auto;
+  }
+}

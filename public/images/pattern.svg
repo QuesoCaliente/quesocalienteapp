@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="100%" height="100%" fill="#0c0c0d"/> <!-- Fondo -->
+  <image x="10" y="10" width="30" height="30" href="/images/logo.svg"/>
+  <image x="80" y="50" width="30" height="30" href="/images/logo.svg"/>
+  <image x="50" y="120" width="30" height="30" href="/images/logo.svg"/>
+  <image x="120" y="150" width="30" height="30" href="/images/logo.svg"/>
+</svg>

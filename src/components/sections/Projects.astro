@@ -37,7 +37,7 @@ import ProjectCard from "../ui/ProjectCard.astro";
       github="https://github.com/QuesoCaliente/pomodoro"
     />
   </div>
-  <Button iconPosition="right" icon="mdi:chevron-right" radius="lg"
+  <Button size="lg" iconPosition="right" icon="mdi:chevron-right" radius="lg"
     >Mostrar Todos</Button
   >
 </section>
@@ -47,6 +47,6 @@ import ProjectCard from "../ui/ProjectCard.astro";
     @apply max-w-screen-xl mx-auto px-4 flex flex-col gap-6 items-start;
   }
   .projects {
-    @apply grid grid-cols-3 gap-5;
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5;
   }
 </style>
