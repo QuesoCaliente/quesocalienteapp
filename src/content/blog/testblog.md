@@ -1,6 +1,11 @@
----
-title: "Welcome to StackEdit!"
----
+title: Test
+description: Si alguna vez has soñado con crear música sin tener que ser un experto en composición, Suno AI es la solución perfecta para ti
+image: "https://cdn.quesocaliente.dev/blog%2Fsuno%2Fsuno-ai.webp"
+createdAt: 2024/04/28
+category: "Inteligencia Artificial"
+updatedAt: 2024/04/28
+tags: ["suno", "inteligencia artificial"]
+author: queso
 
 # Welcome to StackEdit!
 
