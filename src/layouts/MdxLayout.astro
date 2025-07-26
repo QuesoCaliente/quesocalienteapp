@@ -9,11 +9,10 @@ import FormattedDate from "@/components/ui/FormattedDate.astro";
 const {frontmatter} = Astro.props;
 ---
 
-
 <Layout
+showHero
  title={frontmatter.title}
  description={frontmatter.description}
-    
 > 
 <main>
     <article>
@@ -25,14 +24,14 @@ const {frontmatter} = Astro.props;
                         <div  class="w-12 h-12 bg-black rounded-full" />
                     </a>
                     <div>
-                      <time class="capitalize text-gray-500" datetime="2024-03-26T13:33:00-05:00">
+                      <time class="capitalize text-paragraph" datetime="2024-03-26T13:33:00-05:00">
                         <FormattedDate date={new Date(frontmatter.updatedAt)} />
                     </time>
                     </div>
                 </div>
             </div>
             <div>
-                <button aria-label="Compartir" class="text-gray-500">
+                <button aria-label="Compartir" class="text-paragraph">
                     <Icon name="mdi:bookmark" class="w-8 h-8" />
                 </button>
             </div>
@@ -51,13 +50,12 @@ const {frontmatter} = Astro.props;
 </main>
 </Layout>
 
-
 <style>
     footer {
         @apply mt-10;
     }
   article {
-    @apply w-full bg-white min-h-screen p-10 md:rounded-lg shadow-elevation flex-1;
+    @apply w-full bg-darksurface min-h-screen p-10 md:rounded-lg shadow-elevation flex-1;
   }
   main {
     @apply md:py-12 w-full flex flex-col md:flex-row gap-8 mx-auto max-w-screen-xl;
@@ -66,9 +64,10 @@ const {frontmatter} = Astro.props;
     @apply hidden md:block md:w-64 bg-red-500;
   }
   h1 {
-    @apply text-2xl
+    @apply text-2xl text-title
   }
   header {
     @apply flex justify-between mb-7;
   }
 </style>
+

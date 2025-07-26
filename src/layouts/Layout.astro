@@ -4,7 +4,7 @@ import Seo from "@/components/Seo.astro";
 import GradientHero from "@/components/ui/GradientHero.astro";
 import MiniHeader from "@/components/ui/MiniHeader.astro";
 import Particles from "@/components/ui/Particles.astro";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 interface Props {
   title: string;
   description: string;
@@ -25,18 +25,18 @@ const { title, description, image, canonical, showHero } = Astro.props;
       image={image}
       canonical={canonical}
     />
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body class="lg:overflow-x-hidden h-full">
     <!-- <Sidebar /> -->
      {showHero && (
-    <GradientHero />
+    <GradientHero top="-31%"  />
     <Particles />
     <MiniHeader />
      )}
     <div
       id="content"
-      class="relative w-full h-full bg-[#0a0a0a] z-20 transition-transform duration-500 will-change-transform"
+      class="relative w-full h-full bg-[#0a0a0a] z-0 transition-transform duration-500 will-change-transform"
     >
       <slot />
       <Footer />
