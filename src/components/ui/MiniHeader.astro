@@ -2,6 +2,9 @@
 import { Icon } from "astro-icon/components";
 import Particles from "./Particles.astro";
 import SocialHero from "./SocialHero.astro";
+import DropDown from "./DropDown/DropDown.astro";
+import DropDownTitle from "./DropDown/DropDownTitle.astro";
+import DropDownLink from "./DropDown/DropDownLink.astro";
 ---
 
 <header class="header">
@@ -21,11 +24,17 @@ import SocialHero from "./SocialHero.astro";
     </h1>
   </a>
   <SocialHero />
+        <DropDown>
+        <DropDownTitle title="Panel de Control" />
+        <DropDownLink href="/blog" title="Blog" />
+        <DropDownLink href="/legal-terms" title="Terminos y Condiciones" />
+        <DropDownLink href="/cookies" title="Aviso de Cookies" />
+      </DropDown>
 </header>
 
 <style>
   header {
-    @apply flex justify-between items-center flex-col md:flex-row gap-4 md:gap-8 relative overflow-hidden max-w-screen-xl mx-8 md:mx-auto px-11 py-6 rounded-lg my-8;
+    @apply flex justify-between items-center flex-col md:flex-row gap-4 md:gap-8 relative z-[1] max-w-screen-xl mx-8 md:mx-auto px-11 py-6 rounded-lg my-8;
     backdrop-filter: blur(2px);
     background-color: #0a0a0ab3;
     border: 0.2px solid #50536d;

@@ -1,9 +1,9 @@
 ---
 import Footer from "@/components/Footer.astro";
-import Header from "@/components/Header.astro";
-import HeaderMini from "@/components/HeaderMini.astro";
 import Seo from "@/components/Seo.astro";
-import Sidebar from "@/components/ui/Sidebar/Sidebar.astro";
+import GradientHero from "@/components/ui/GradientHero.astro";
+import MiniHeader from "@/components/ui/MiniHeader.astro";
+import Particles from "@/components/ui/Particles.astro";
 import { ViewTransitions } from "astro:transitions";
 interface Props {
   title: string;
@@ -29,6 +29,11 @@ const { title, description, image, canonical, showHero } = Astro.props;
   </head>
   <body class="lg:overflow-x-hidden h-full">
     <!-- <Sidebar /> -->
+     {showHero && (
+    <GradientHero />
+    <Particles />
+    <MiniHeader />
+     )}
     <div
       id="content"
       class="relative w-full h-full bg-[#0a0a0a] z-20 transition-transform duration-500 will-change-transform"

@@ -1,5 +1,6 @@
 ---
-import type { MarkdownHeading } from 'node_modules/astro/dist/@types/astro';
+import type { MarkdownHeading } from 'node_modules/astro/dist/types/public';
+
 
 interface Props {
     headings?: MarkdownHeading[];
@@ -21,7 +22,7 @@ const { headings } = Astro.props;
       box-shadow: 2px 0 0 0 #d1d5db inset;
     }
     .toc-link {
-      @apply text-gray-800 transition-all duration-300 ease-in-out;
+      @apply text-gray-100  transition-all duration-300 ease-in-out;
       display: block;
     padding: .75rem 1rem;
     padding-left: 1.5rem;
@@ -32,9 +33,11 @@ const { headings } = Astro.props;
     }
     .toc-link:hover {
       background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+      @apply text-gray-800;
+      box-shadow: 2px 0 0 0 #1f2937 inset
     }
     .toc-link.active {
-      @apply bg-gray-200 font-medium;
+      @apply bg-gray-300 font-medium text-gray-800;
       box-shadow: 2px 0 0 0 #1f2937 inset;
     }
 </style>

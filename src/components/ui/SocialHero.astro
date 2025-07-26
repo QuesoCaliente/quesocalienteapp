@@ -1,5 +1,9 @@
 ---
+import { Icon } from "astro-icon/components";
 import Button from "./Buttons/Button.astro";
+import DropDown from "./DropDown/DropDown.astro";
+import DropDownLink from "./DropDown/DropDownLink.astro";
+import DropDownTitle from "./DropDown/DropDownTitle.astro";
 ---
 
 <div class="flex gap-2 items-center">
@@ -39,4 +43,33 @@ import Button from "./Buttons/Button.astro";
     icon="mdi:instagram"
     href="https://twitch.tv/quesocaliente0"
   />
+      <button id="dropdownButton" class="cursor-pointer transition-transform duration-500 ease-in-out">
+        <Icon class="text-white size-6" name="mdi:dots-vertical" />
+      </button>
 </div>
+
+
+<script>
+
+  document.addEventListener('astro:page-load', () => {
+    const dropdownButton = document.querySelector('#dropdownButton') as HTMLButtonElement | null;
+	
+	const dropDownMenu = document.querySelector('.dropdown') as HTMLDivElement | null;
+	  if (dropdownButton && dropDownMenu) {
+      // Escuchar clics en todo el documento
+      document.addEventListener('click', (e) => {
+        if (!dropDownMenu.contains(e.target as Node) && !dropdownButton.contains(e.target as Node))  {
+          dropDownMenu.classList.remove('is-active');
+          dropdownButton.classList.remove('rotate-90');
+        }
+      });
+
+
+      dropdownButton.addEventListener('click', () => {
+      dropDownMenu.classList.toggle('is-active');
+      dropdownButton.classList.toggle('rotate-90');
+      });
+	  }
+  })
+
+</script>

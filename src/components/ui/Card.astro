@@ -39,8 +39,8 @@ const { title, slug, image, tags, description } = Astro.props;
 
 <style>
     article {
-        @apply bg-white rounded-lg overflow-hidden relative;
-        box-shadow: 0 4px 6px -1px rgb(17 24 39 / 10%), 0 2px 4px -1px rgb(17 24 39 / 5%);
+        @apply bg-darksurface rounded-lg overflow-hidden relative;
+        box-shadow: 0 4px 6px -1px rgb(255 255 255 / 10%), 0 2px 4px -1px rgb(255 255 255 / 5%);
     }
     .card-image img {
         @apply w-full h-48 object-cover;
@@ -52,7 +52,7 @@ const { title, slug, image, tags, description } = Astro.props;
         @apply font-medium ;
     }
     .card-text {
-        @apply text-gray-600 mt-2;
+        @apply text-paragraph mt-2;
     }
     .card-tags {
         @apply mt-2 flex gap-2;
@@ -61,10 +61,10 @@ const { title, slug, image, tags, description } = Astro.props;
         @apply mt-4 text-gray-600 flex items-center flex-wrap gap-1 capitalize;
     }
     .tag {
-        @apply text-yellow-700;
+        @apply text-yellow-400;
     }
     .card-body {
-        @apply p-7 text-gray-600
+        @apply p-7 text-title
     }
 
 
