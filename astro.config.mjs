@@ -15,7 +15,10 @@ const options = {
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), icon(), mdx(), react()],
+  integrations: [tailwind(), icon(), mdx({
+    remarkPlugins: [],
+    rehypePlugins: [],
+  }), react()],
   output: "server",
   adapter: vercel(),
   site: seoConfig.baseURL,

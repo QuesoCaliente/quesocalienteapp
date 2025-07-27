@@ -1,0 +1,59 @@
+---
+export const prerender = true;
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import Prose from "../components/ui/Prose.astro";
+import Divider from "../components/ui/Divider.astro";
+import FormattedDate from "../components/ui/FormattedDate.astro";
+import { render } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+
+export async function getStaticPaths() {
+    const pages = await getCollection('pages');
+    return pages.map((page) => ({
+        params: { pageId: page.id },
+        props: { page },
+    }));
+}
+
+const { page } = Astro.props
+const content = await render(page)
+const {Content} = content;
+
+if (!page) {
+    throw new Error(`Page with id ${Astro.params.pageId} not found`);
+}
+--- 
+<Layout title={page.data.title} description={page.data.description} showHero>
+    <article class="w-full max-w-screen-xl mx-auto bg-darksurface min-h-screen p-10 md:rounded-lg shadow-elevation flex-1">
+        <header class="flex justify-between mb-7">
+            <div>
+                <h1 class="text-2xl text-title">{page.data.title}</h1>
+                <div class="mt-3 text-sm flex flex-wrap items-center gap-4">
+                    <a href={`#`} >
+                        <img src="/images/logo.svg" alt="VTidols Logo" class="w-8 h-8 rounded-lg inline-block" />
+                    </a>
+                    <div>
+                      <time class="capitalize text-paragraph" datetime="2024-03-26T13:33:00-05:00">
+                        <FormattedDate date={new Date(page.data.updatedAt)} />
+                    </time>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button aria-label="Compartir" class="text-gray-500">
+                    <Icon name="mdi:bookmark" class="w-8 h-8" />
+                </button>
+            </div>
+        </header>
+        <section>
+            <Prose>
+                <Content/>
+            </Prose>
+        </section>
+        <footer>
+            <Divider/>
+            <div class="giscus mt-10" />
+        </footer>
+    </article>
+</Layout>

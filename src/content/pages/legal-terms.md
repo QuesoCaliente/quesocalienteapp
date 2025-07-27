@@ -1,14 +1,9 @@
 ---
-import MdxLayout from "../layouts/MdxLayout.astro";
-
-const frontmatter = {
-  title: "Terminos y Condiciones",
-  description: "Terminos y Condiciones de quesocaliente.dev",
-  updatedAt: "2024-05-02"
-};
+title: "Términos Legales"
+description: "Términos y condiciones de uso"
+updatedAt: "2024-03-26T13:33:00-05:00"
 ---
 
-<MdxLayout frontmatter={frontmatter}>
 <p>Por favor, lee atentamente estos términos y condiciones antes de utilizar el sitio web QuesoCaliente (en adelante, "el Sitio").</p>
 
 <h2>Aceptación de los Términos</h2>
@@ -43,4 +38,3 @@ const frontmatter = {
 <p>Si tienes alguna pregunta o inquietud sobre estos términos y condiciones, por favor, ponte en contacto con el Sitio QuesoCaliente a través de la información de contacto proporcionada en el Sitio.</p>
 
 <p>Al utilizar el Sitio, aceptas estos términos y condiciones en su totalidad. Si no estás de acuerdo con estos términos, por favor, no utilices el Sitio.</p>
-</MdxLayout>
