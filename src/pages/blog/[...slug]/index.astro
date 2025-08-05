@@ -7,100 +7,113 @@ import { Icon } from "astro-icon/components";
 import { getEntry } from "astro:content";
 import { customComponents } from "@/utils/mdxConfig";
 import Divider from "@/components/ui/Divider.astro";
-import ReadingTime from '@/components/ui/Author/ReadingTime.astro';
+import ReadingTime from "@/components/ui/Author/ReadingTime.astro";
 import { render } from "astro:content";
 
 const { slug } = Astro.params;
 
-if(!slug) return Astro.redirect("/404");
-
+if (!slug) return Astro.redirect("/404");
 
 const post = await getEntry("blog", slug);
 
 if (!post) return Astro.redirect("/404");
 
-const { Content, headings } = await render(post)
+const { Content, headings } = await render(post);
 const author = await getEntry("authors", post.data.author.id);
 ---
 
 <Layout
-title={post.data.title}
-image={post.data.image}
-description={post.data.description}
+  showHero
+  title={post.data.title}
+  image={post.data.image}
+  description={post.data.description}
 >
-<main>
+  <main>
     <article>
-        <header>
+      <header>
+        <div class="w-full">
+          <div class="flex justify-between w-full mb-7">
+            <h1>{post.data.title}</h1>
+            <button aria-label="Compartir" class="text-paragraph">
+              <Icon name="mdi:bookmark" class="w-8 h-8" />
+            </button>
+          </div>
+          <div class="mt-3 text-sm flex flex-wrap items-center gap-4">
+            <a href={`/blog/author/${author?.id}`}>
+              <img
+                transition:name={author?.data.name}
+                src={author?.data.avatar}
+                alt={author?.data.name}
+                class="w-12 h-12 rounded-full"
+              />
+            </a>
             <div>
-                <h1>{post.data.title}</h1>
-                <div class="mt-3 text-sm flex flex-wrap items-center gap-4">
-                    <a href={`/blog/author/${author?.id}`} >
-                        <img transition:name={author?.data.name} src={author?.data.avatar} alt={author?.data.name} class="w-12 h-12 rounded-full" />
-                    </a>
-                    <div>
-                      <time class="capitalize text-paragraph" datetime="2024-03-26T13:33:00-05:00">
-                        <FormattedDate date={new Date(post.data.updatedAt)} />
-                    </time>
-                    </div>
-                    <ReadingTime text={post.body!}>
-                </div>
+              <time
+                class="capitalize text-paragraph"
+                datetime="2024-03-26T13:33:00-05:00"
+              >
+                <FormattedDate date={new Date(post.data.updatedAt)} />
+              </time>
             </div>
-            <div>
-                <button aria-label="Compartir" class="text-paragraph">
-                    <Icon name="mdi:bookmark" class="w-8 h-8" />
-                </button>
-            </div>
-        </header>
-        <section>
-            <img transition:name={post.data.title} src={post.data.image} alt={post.data.title} class="w-full h-96 object-cover rounded-lg mb-8" />
-            <Prose>
-                <Content components={customComponents} />
-            </Prose>
-        </section>
-        <footer>
-            <Divider/>
-            <div class="giscus mt-10" />
-        </footer>
+            <ReadingTime text={post.body!} />
+          </div>
+        </div>
+      </header>
+      <section>
+        <img
+          transition:name={post.data.title}
+          src={post.data.image}
+          alt={post.data.title}
+          class="w-full h-96 object-cover rounded-lg mb-8"
+        />
+        <Prose>
+          <Content components={customComponents} />
+        </Prose>
+      </section>
+      <footer>
+        <Divider />
+        <div class="giscus mt-10"></div>
+      </footer>
     </article>
     <SidebarPost headings={headings} />
-</main>
-</Layout>
+  </main>
 
-<style>
+  <style>
     footer {
-        @apply mt-10;
+      @apply mt-10;
     }
-  article {
-    @apply w-full bg-darksurface min-h-screen p-10 md:rounded-lg shadow-elevation flex-1;
-  }
-  main {
-    @apply md:py-12 w-full flex flex-col md:flex-row gap-8 mx-auto max-w-screen-xl;
-  }
-  aside {
-    @apply hidden md:block md:w-64 bg-red-500;
-  }
-  h1 {
-    @apply text-2xl text-title
-  }
-  header {
-    @apply flex justify-between mb-7;
-  }
-</style>
+    article {
+      @apply w-full bg-[#0a0a0ab3] min-h-screen p-10 md:rounded-lg shadow-elevation flex-1;
+    }
+    main {
+      @apply md:py-12 w-full flex flex-col md:flex-row gap-8 mx-auto max-w-screen-xl;
+    }
+    aside {
+      @apply hidden md:block md:w-64 bg-red-500;
+    }
+    h1 {
+      @apply text-2xl text-title;
+    }
+    header {
+      @apply flex justify-between mb-7;
+    }
+  </style>
 
-
-<script is:inline src="https://giscus.app/client.js"
-        data-repo="QuesoCaliente/el-laboratorio"
-        data-repo-id="R_kgDOL1i6fw"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOL1i6f84CfDxJ"
-        data-mapping="url"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="fro"
-        data-lang="es"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>
+  <script
+    is:inline
+    src="https://giscus.app/client.js"
+    data-repo="QuesoCaliente/el-laboratorio"
+    data-repo-id="R_kgDOL1i6fw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOL1i6f84CfDxJ"
+    data-mapping="url"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="fro"
+    data-lang="es"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async></script></Layout
+>
