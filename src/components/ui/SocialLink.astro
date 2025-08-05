@@ -1,17 +1,22 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 
 interface Props {
-    name: string;
-    url: string;
-    icon: string;
-    }
+  name: string;
+  url: string;
+  icon: string;
+}
 
 const { name, url, icon } = Astro.props;
-
 ---
 
-
-<a title={name} class="rounded-md inline-flex bg-yellow-500 p-1 text-2xl text-[#0f0f13]  transition-all duration-300 ease-in-out hover:rounded-lg hover:bg-yellow-400 hover:text-black" title={name} href={url} target="_blank">
-    <Icon name={icon} />
-    </a>
+<a
+  title={name}
+  class="rounded-md inline-flex bg-yellow-500 p-1 text-2xl text-[#0f0f13] transition-all duration-300 ease-in-out hover:rounded-lg hover:bg-yellow-400 hover:text-black"
+  aria-label={`Visitar ${name}`}
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Icon name={icon} />
+</a>

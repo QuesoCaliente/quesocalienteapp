@@ -20,6 +20,7 @@ const { title, link, image, description, github, reverse } = Astro.props;
     target="_blank"
     class="flex flex-1 flex-col group"
     rel="noopener noreferrer"
+    aria-label={`Ver proyecto: ${title} - ${description}`}
   >
     <div class="relative p-6">
       <img
@@ -32,6 +33,7 @@ const { title, link, image, description, github, reverse } = Astro.props;
         class="absolute top-8 right-8 z-[2] group"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={`Ver código fuente de ${title} en GitHub`}
       >
         <Badge
           title="Github"

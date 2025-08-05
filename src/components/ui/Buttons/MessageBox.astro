@@ -1,52 +1,50 @@
 ---
 interface Props {
-    title: string;
-    snippet: string;
-    backgroundColor?: string;
-    image?: string;
-    href?: string;
+  title: string;
+  snippet: string;
+  backgroundColor?: string;
+  image?: string;
+  href?: string;
 }
 const { title, snippet, href, image } = Astro.props;
 ---
 
-<a href={href} class='box-message'>
-    {image && <img src={image} alt={title}/>}
-    <div class={`box-content`}>
-        <span class="box-title">{title}</span>
-        <span class="box-snippet">{snippet}</span>
-    </div>
+<a href={href} class="box-message" aria-label={`${title} - ${snippet}`}>
+  {image && <img src={image} alt={title} />}
+  <div class={`box-content`}>
+    <span class="box-title">{title}</span>
+    <span class="box-snippet">{snippet}</span>
+  </div>
 </a>
 
-
-
-
-<style define:vars={{
-    bgColor: Astro.props.backgroundColor || '#b8924c'
-}}>
-
-    .box-message {
-        @apply shadow-low transition-shadow duration-500 block relative overflow-hidden w-full rounded-md;
-        background-color: var(--bgColor);
-    }
-    img {
-        @apply object-cover absolute  w-full h-full block inset-0 rounded-md;
-    }
-    .box-content {
-        @apply relative  z-10 gap-1 text-white p-6 flex flex-col transition-all duration-500 rounded-md;
-        background-position: 50% center;
-        background-size: 150% auto;
-        background-image: linear-gradient(90deg,var(--bgColor) 10%,transparent);
-    }
-    .box-content:hover {
-        background-position: 100% center;
-    }
-    .box-title {
-        @apply text-lg font-semibold;
-    }
-    .box-snippet {
-        @apply text-base font-normal;
-    }
-    img {
-        @apply m-0
-    }
+<style
+  define:vars={{
+    bgColor: Astro.props.backgroundColor || "#b8924c",
+  }}
+>
+  .box-message {
+    @apply shadow-low transition-shadow duration-500 block relative overflow-hidden w-full rounded-md;
+    background-color: var(--bgColor);
+  }
+  img {
+    @apply object-cover absolute  w-full h-full block inset-0 rounded-md;
+  }
+  .box-content {
+    @apply relative  z-10 gap-1 text-white p-6 flex flex-col transition-all duration-500 rounded-md;
+    background-position: 50% center;
+    background-size: 150% auto;
+    background-image: linear-gradient(90deg, var(--bgColor) 10%, transparent);
+  }
+  .box-content:hover {
+    background-position: 100% center;
+  }
+  .box-title {
+    @apply text-lg font-semibold;
+  }
+  .box-snippet {
+    @apply text-base font-normal;
+  }
+  img {
+    @apply m-0;
+  }
 </style>

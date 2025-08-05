@@ -185,7 +185,6 @@ const buttonClasses = [
       role={role}
       aria-label={ariaLabel || (iconOnly ? `${icon} button` : undefined)}
       aria-busy={loading}
-      aria-hidden={iconOnly ? "true" : undefined}
       data-track={track}
     >
       {loading ? (
@@ -207,7 +206,6 @@ const buttonClasses = [
       href={href}
       role={role || "link"}
       aria-label={ariaLabel || (iconOnly ? `${icon} button` : undefined)}
-      aria-hidden={iconOnly ? "true" : undefined}
       data-track={track}
     >
       {icon && iconPosition === "left" && <Icon name={icon} />}

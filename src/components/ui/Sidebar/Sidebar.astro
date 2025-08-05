@@ -2,47 +2,60 @@
 import { Icon } from "astro-icon/components";
 import SidebarItem from "./SidebarItem.astro";
 ---
-<div
-	id="sidebar"
-	class="fixed top-0 left-0 bottom-0 z-10  w-64 bg-[#1f1f1f] text-white"
->
-	<div class="flex justify-end p-5">
-		<Icon
-			id="closeMenu"
-			class="cursor-pointer text-2xl"
-			name="mdi:arrow-left"
-		/>
-	</div>
 
-	<nav class="staggered">
-		<SidebarItem style="--delay:1" href="/" title="Home">
-			<Icon slot="icon" class="cursor-pointer text-2xl" name="mdi:home-outline" />
-		</SidebarItem>
-		<SidebarItem style="--delay:2" href="/blog" title="Blog">
-			<Icon slot="icon" class="cursor-pointer text-2xl" name="mdi:blog-outline" />
-		</SidebarItem>
-	</nav>
+<div
+  id="sidebar"
+  class="fixed top-0 left-0 bottom-0 z-10 w-64 bg-[#1f1f1f] text-white"
+>
+  <div class="flex justify-end p-5">
+    <button
+      id="closeMenu"
+      class="cursor-pointer text-2xl bg-transparent border-none text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded"
+      aria-label="Cerrar menú lateral"
+    >
+      <Icon class="text-2xl" name="mdi:arrow-left" />
+    </button>
+  </div>
+
+  <nav class="staggered">
+    <SidebarItem style="--delay:1" href="/" title="Home">
+      <Icon
+        slot="icon"
+        class="cursor-pointer text-2xl"
+        name="mdi:home-outline"
+      />
+    </SidebarItem>
+    <SidebarItem style="--delay:2" href="/blog" title="Blog">
+      <Icon
+        slot="icon"
+        class="cursor-pointer text-2xl"
+        name="mdi:blog-outline"
+      />
+    </SidebarItem>
+  </nav>
 </div>
-<div id='sidebar-backdrop' aria-hidden="true"></div>
+<div id="sidebar-backdrop" aria-hidden="true"></div>
 
 <script>
-	document.addEventListener("astro:page-load", () => {
-		const content = document.querySelector("#content") as HTMLElement;
-		const sidebarBackdrop = document.querySelector("#sidebar-backdrop") as HTMLElement;
+  document.addEventListener("astro:page-load", () => {
+    const content = document.querySelector("#content") as HTMLElement;
+    const sidebarBackdrop = document.querySelector(
+      "#sidebar-backdrop"
+    ) as HTMLElement;
 
-		const toggleSidebar = () => {
-			sidebarBackdrop.classList.toggle("active");
-			sidebarBackdrop.classList.toggle("translate-x-64");
-			content.classList.toggle("translate-x-64");
-		};
-		const closeMenu = document.querySelector("#closeMenu") as HTMLElement;
-		closeMenu.addEventListener("click", toggleSidebar);
-		sidebarBackdrop.addEventListener("click", toggleSidebar);
-	});
+    const toggleSidebar = () => {
+      sidebarBackdrop.classList.toggle("active");
+      sidebarBackdrop.classList.toggle("translate-x-64");
+      content.classList.toggle("translate-x-64");
+    };
+    const closeMenu = document.querySelector("#closeMenu") as HTMLButtonElement;
+    closeMenu.addEventListener("click", toggleSidebar);
+    sidebarBackdrop.addEventListener("click", toggleSidebar);
+  });
 </script>
 
 <style>
-	.hidden {
-		display: none;
-	}
+  .hidden {
+    display: none;
+  }
 </style>
