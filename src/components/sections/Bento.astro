@@ -3,6 +3,7 @@ import { getLastBlogPost } from "@/core/blog/functions";
 import { Icon } from "astro-icon/components";
 import MiniHeader from "../ui/MiniHeader.astro";
 import Button from "../ui/Buttons/Button.astro";
+import { SOCIAL_LINKS, PROJECT_LINKS } from "@/config";
 
 const lastPost = await getLastBlogPost();
 
@@ -12,7 +13,7 @@ const image = lastPost.data.image;
 <section>
   <article class="linkedin-container">
     <a
-      href="https://www.linkedin.com/in/briancifuentes/"
+      href={SOCIAL_LINKS.linkedin.url}
       target="_blank"
       aria-label="Conectar en LinkedIn - Brian Cifuentes, Desarrollador de Software"
     >
@@ -37,7 +38,7 @@ const image = lastPost.data.image;
   </article>
   <article class="my-repository-container group overflow-hiddden relative">
     <a
-      href="https://github.com/QuesoCaliente"
+      href={SOCIAL_LINKS.github.url}
       target="_blank"
       aria-label="Visitar repositorios de GitHub - QuesoCaliente"
     >
@@ -56,7 +57,7 @@ const image = lastPost.data.image;
   </article>
   <article class="my-library-container">
     <a
-      href="https://asset-box-nine.vercel.app/"
+      href={PROJECT_LINKS.assetBox}
       target="_blank"
       aria-label="Acceder a la librería de recursos de desarrollo"
     >

@@ -1,23 +1,11 @@
 ---
 import SocialFooter from "./ui/SocialFooter.astro";
 import { version } from "@site/../package.json";
+import { FOOTER_SOCIAL_LINKS } from "@/config";
 ---
 
 <footer class="bg-cActiveMenu text-gray-300">
-  <SocialFooter
-    socialLinks={[
-      {
-        name: "Twitter",
-        url: "https://twitter.com/quesocaliente0",
-        icon: "mdi:twitter",
-      },
-      {
-        name: "Discord",
-        url: "https://discord.gg/whjkMeTKRN",
-        icon: "mdi:discord",
-      },
-    ]}
-  />
+  <SocialFooter socialLinks={FOOTER_SOCIAL_LINKS} />
   <div>
     <div class="flex w-full items-center justify-center p-2 text-white">
       <small>© 2025 quesocaliente - Creado con 💛</small>

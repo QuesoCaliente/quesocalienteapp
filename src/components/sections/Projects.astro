@@ -2,40 +2,24 @@
 import SectionTitle from "../SectionTitle.astro";
 import Button from "../ui/Buttons/Button.astro";
 import ProjectCard from "../ui/ProjectCard.astro";
+import { PROJECTS } from "@/config";
 ---
 
 <section class="section">
   <SectionTitle> Proyectos </SectionTitle>
   <div class="projects">
-    <ProjectCard
-      title="Tic Tac Toe"
-      description="Juego de gato desarrollado con reactjs"
-      link="https://tictactoe-lake-six.vercel.app/"
-      image="/images/projects/tictactoe/image1.webp"
-      github="https://github.com/QuesoCaliente/tictactoe"
-    />
-    <ProjectCard
-      reverse
-      title="Pixelate"
-      description="Aplicación para pixelar imágenes desarrollado con nextjs para una hackaton"
-      link="https://pixelate-nine.vercel.app/"
-      image="/images/projects/pixelate/image1.webp"
-      github="https://github.com/QuesoCaliente/pixelate"
-    />
-    <ProjectCard
-      title="Pomodoro"
-      description="Aplicación para gestionar el tiempo con la técnica pomodoro"
-      link="https://pomodoro-nine-pi.vercel.app/"
-      image="/images/projects/pomodoro/image1.webp"
-      github="https://github.com/QuesoCaliente/pomodoro"
-    />
-    <ProjectCard
-      title="Pomodoro"
-      description="Aplicación para gestionar el tiempo con la técnica pomodoro"
-      link="https://pomodoro-nine-pi.vercel.app/"
-      image="/images/projects/pomodoro/image1.webp"
-      github="https://github.com/QuesoCaliente/pomodoro"
-    />
+    {
+      PROJECTS.map((project) => (
+        <ProjectCard
+          title={project.title}
+          description={project.description}
+          link={project.link}
+          image={project.image}
+          github={project.github}
+          reverse={project.reverse}
+        />
+      ))
+    }
   </div>
   <Button size="lg" iconPosition="right" icon="mdi:chevron-right" radius="lg"
     >Mostrar Todos</Button

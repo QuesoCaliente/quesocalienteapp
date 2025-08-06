@@ -3,33 +3,32 @@ import type { MarkdownHeading } from "astro";
 import MessageBox from "../Buttons/MessageBox.astro";
 import Widget from "./Widget.astro";
 import Toc from "./Toc.astro";
+import { SOCIAL_LINKS } from "@/config";
 
 interface Props {
-    headings?: MarkdownHeading[];
+  headings?: MarkdownHeading[];
 }
 
 const { headings } = Astro.props;
 ---
 
 <aside>
-    <Widget title="Kofi ☕">
-        <MessageBox 
-            title="Apoya mi contenido" 
-            snippet="con un café" 
-            href="https://ko-fi.com/quesocaliente0"
-            backgroundColor="#2d3436"
-            image="https://i.imgur.com/rmobJ55.jpeg"
-            />
-    </Widget>
-    <Widget showMobile={false} sticky title="Tabla de contenido">
-        <Toc headings={headings} />
-    </Widget>
-  </aside>
+  <Widget title="Kofi ☕">
+    <MessageBox
+      title="Apoya mi contenido"
+      snippet="con un café"
+      href={SOCIAL_LINKS.kofi.url}
+      backgroundColor="#2d3436"
+      image="https://i.imgur.com/rmobJ55.jpeg"
+    />
+  </Widget>
+  <Widget showMobile={false} sticky title="Tabla de contenido">
+    <Toc headings={headings} />
+  </Widget>
+</aside>
 
-
-  <style>
-
-    aside {
-        @apply md:w-[260px] mt-6 p-5 md:p-0 flex flex-col gap-6;
-    }
-  </style>
+<style>
+  aside {
+    @apply md:w-[260px] mt-6 p-5 md:p-0 flex flex-col gap-6;
+  }
+</style>
