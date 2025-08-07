@@ -18,6 +18,12 @@
   --color-darksurface: #333333;
   --color-cActiveMenu: #0f0f13;
 
+  /* Component specific colors */
+  --color-border-gray: #292929;
+  --color-container-dark: #0c0c0c;
+  --color-item-background: #292929;
+  --color-text-primary: #ffffff;
+
   /* Custom transition timing functions */
   --ease-drop-out: cubic-bezier(0.7, 0.006, 0.2, 1);
 

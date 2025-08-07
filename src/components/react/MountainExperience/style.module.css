@@ -1,6 +1,6 @@
 .mountain {
-  color: var(--color-gray-400);
-  mask: url("/mountain.svg") no-repeat center;
+  color: #9ca3af; /* text-gray-400 */
+  mask: url("../../../../public/mountain.svg") no-repeat center;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
   width: 100%;
@@ -11,25 +11,40 @@
 
 .experienceListContainer {
   border: 1px solid #292929;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #0c0c0c;
-  width: 24rem; /* Equivalent to w-96 in Tailwind (384px) */
-  padding: 1.5rem; /* Equivalent to p-6 in Tailwind (24px) */
-  opacity: 0.75;
-  border: 1px solid #292929;
+  width: 100%;
+  padding: 1.5rem; /* p-6 */
+  opacity: 0.75; /* opacity-75 */
+  position: static;
+  top: auto;
+  right: auto;
+  background-color: #0c0c0c; /* bg-[#0c0c0c] */
+}
+
+/* Large screens and up */
+@media (min-width: 1024px) {
+  .experienceListContainer {
+    position: absolute; /* lg:absolute */
+    top: 0; /* top-0 */
+    right: 0; /* right-0 */
+    width: 24rem; /* lg:w-96 */
+  }
 }
 
 .experienceListItem {
-  background-color: #292929;
-  width: 100%;
-  max-width: 13rem; /* Approximate for lg:w-52 (208px) */
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-radius: 0.5rem;
-  color: #fff;
-  flex: 1 1 auto;
+  background-color: #292929; /* bg-[#292929] */
+  width: 100%; /* w-full */
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  padding-top: 0.5rem; /* py-2 */
+  padding-bottom: 0.5rem; /* py-2 */
+  border-radius: 0.5rem; /* rounded-lg */
+  color: #ffffff; /* text-white */
+  flex: 1 1 auto; /* flex-auto */
+}
+
+/* Large screens and up */
+@media (min-width: 1024px) {
+  .experienceListItem {
+    width: 13rem; /* lg:w-52 */
+  }
 }
