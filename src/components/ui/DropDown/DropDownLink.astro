@@ -1,21 +1,19 @@
 ---
 interface Props {
-    title: string;
-    href: string;
-    
+  title: string;
+  href: string;
 }
 
-const {title, href} = Astro.props;
+const { title, href } = Astro.props;
 ---
 
 <a href={href}>
-{title}
+  {title}
 </a>
 
-
 <style>
-    a {
-        @apply text-paragraph block mt-2 text-sm text-justify;
-    }
-
-    </style>
+  @reference "@/styles/global.css";
+  a {
+    @apply text-paragraph block mt-2 text-sm text-justify;
+  }
+</style>

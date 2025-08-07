@@ -5,6 +5,7 @@ import GradientHero from "@/components/ui/GradientHero.astro";
 import MiniHeader from "@/components/ui/MiniHeader.astro";
 import Particles from "@/components/ui/Particles.astro";
 import { ClientRouter } from "astro:transitions";
+import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
@@ -44,6 +45,7 @@ const { title, description, image, canonical, showHero } = Astro.props;
   </body>
 </html>
 <style is:global>
+  @reference "@/styles/global.css";
   html {
     font-family: "Onest Variable", sans-serif;
     background: #0a0a0a;

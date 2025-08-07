@@ -1,58 +1,58 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
 
 type Props = CollectionEntry<"authors">["data"] & {
-    id: string;
-}
+  id: string;
+};
 
 const { name, alias, avatar, id } = Astro.props;
 ---
 
 <article>
-    <div class="card-content">
-        <header>
-            <a href={`/blog/author/${id}`} class="card-image">
-                <img transition:name={name} src={avatar}/>
-            </a>
-        </header>
-        <div class="card-body">
-            <h3 class="card-title">
-                {name} ({alias})
-            </h3>
-        </div>
+  <div class="card-content">
+    <header>
+      <a href={`/blog/author/${id}`} class="card-image">
+        <img transition:name={name} src={avatar} />
+      </a>
+    </header>
+    <div class="card-body">
+      <h3 class="card-title">
+        {name} ({alias})
+      </h3>
     </div>
+  </div>
 </article>
 
-
 <style>
-    article {
-        @apply bg-white rounded-lg overflow-hidden relative;
-        box-shadow: 0 4px 6px -1px rgb(17 24 39 / 10%), 0 2px 4px -1px rgb(17 24 39 / 5%);
-    }
-    .card-image img {
-     @apply w-full h-48 object-cover;
-    }
-    .card-body {
-        @apply p-7;
-    }
-    .card-title {
-        @apply font-medium ;
-    }
-    .card-text {
-        @apply text-gray-600 mt-2;
-    }
-    .card-tags {
-        @apply mt-2 flex gap-2;
-    }
-    .card-footer {
-        @apply mt-4 text-gray-600 flex items-center flex-wrap gap-1 capitalize;
-    }
-    .tag {
-        @apply text-yellow-700;
-    }
-    .card-body {
-        @apply p-7 text-gray-600
-    }
-
-
+  @reference "@/styles/global.css";
+  article {
+    @apply bg-white rounded-lg overflow-hidden relative;
+    box-shadow:
+      0 4px 6px -1px rgb(17 24 39 / 10%),
+      0 2px 4px -1px rgb(17 24 39 / 5%);
+  }
+  .card-image img {
+    @apply w-full h-48 object-cover;
+  }
+  .card-body {
+    @apply p-7;
+  }
+  .card-title {
+    @apply font-medium;
+  }
+  .card-text {
+    @apply text-gray-600 mt-2;
+  }
+  .card-tags {
+    @apply mt-2 flex gap-2;
+  }
+  .card-footer {
+    @apply mt-4 text-gray-600 flex items-center flex-wrap gap-1 capitalize;
+  }
+  .tag {
+    @apply text-yellow-700;
+  }
+  .card-body {
+    @apply p-7 text-gray-600;
+  }
 </style>

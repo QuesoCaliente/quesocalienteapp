@@ -6,25 +6,33 @@ import { getCollection } from "astro:content";
 
 const authors = await getCollection("authors");
 ---
-<Layout title="Autores" description="Lista de Autores que han escrito en el Blog">
-<main>
+
+<Layout
+  title="Autores"
+  description="Lista de Autores que han escrito en el Blog"
+>
+  <main>
     <div class="main-content">
-      <SectionTitle title="Autores" description="Lista de Autores que han escrito en el Blog" />
+      <SectionTitle
+        title="Autores"
+        description="Lista de Autores que han escrito en el Blog"
+      />
       <section class="blog-list">
-  
-        {authors.map((author) => (
-          <AuthorCard id={author.id} {...author.data} />
-        ))
-      }
-        </section>
+        {
+          authors.map((author) => (
+            <AuthorCard id={author.id} {...author.data} />
+          ))
+        }
+      </section>
     </div>
-</main>
+  </main>
 </Layout>
 
 <style>
+  @reference "@/styles/global.css";
   .blog-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(min(100%,15rem),1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
     gap: 1rem;
   }
   @media (max-width: 600px) {
@@ -36,6 +44,6 @@ const authors = await getCollection("authors");
     @apply mt-20 mb-20;
   }
   .main-content {
-    @apply max-w-screen-xl lg:mx-auto mx-5 ;
+    @apply max-w-screen-xl lg:mx-auto mx-5;
   }
 </style>

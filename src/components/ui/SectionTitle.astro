@@ -1,26 +1,25 @@
 ---
 interface Props {
-    title: string;
-    description: string;
+  title: string;
+  description: string;
 }
 const { title, description } = Astro.props;
 ---
 
 <div>
-    <h2>{title}</h2>
-    <p>{description}</p>
+  <h2>{title}</h2>
+  <p>{description}</p>
 </div>
 
-
-
 <style>
-    div {
-        @apply text-center mx-auto mb-16 max-w-[50%]
-    }
-    h2 {
-        @apply text-xl font-medium text-title
-    }
-    p {
-        @apply text-paragraph text-lg text-balance mt-4
-    }
+  @reference "@/styles/global.css";
+  div {
+    @apply text-center mx-auto mb-16 max-w-[50%];
+  }
+  h2 {
+    @apply text-xl font-medium text-title;
+  }
+  p {
+    @apply text-paragraph text-lg text-balance mt-4;
+  }
 </style>

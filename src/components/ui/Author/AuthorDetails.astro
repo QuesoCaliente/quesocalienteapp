@@ -1,41 +1,47 @@
 ---
-import type { CollectionEntry } from 'astro:content'
-import SocialLink from '@/components/ui/SocialLink.astro';
-import Divider from '../Divider.astro';
+import type { CollectionEntry } from "astro:content";
+import SocialLink from "@/components/ui/SocialLink.astro";
+import Divider from "../Divider.astro";
 
 interface Props {
-    author: CollectionEntry<"authors">["data"]
+  author: CollectionEntry<"authors">["data"];
 }
 
 const { author } = Astro.props;
-
 ---
 
 <article class="flex justify-center gap-10 flex-col lg:flex-row">
-    <div class="flex justify-center md:min-w-40 bg-white p-1 md:rounded-lg shadow-elevation flex-1">
-        <img transition:name={author.name} src={author.avatar} alt={author.name} />
+  <div
+    class="flex justify-center md:min-w-40 bg-white p-1 md:rounded-lg shadow-elevation flex-1"
+  >
+    <img transition:name={author.name} src={author.avatar} alt={author.name} />
+  </div>
+  <div
+    class="flex flex-col bg-white p-8 md:rounded-lg flex-[3] border-t-4 border-[#eab308]"
+  >
+    <h1 class="text-4xl">
+      {author.name}
+      {author.alias && `(${author.alias})`}
+    </h1>
+    <Divider />
+    <p class="text-justify text-xl w-full pb-4">{author.bio}</p>
+    <div class="w-full">
+      {
+        Object.entries(author.networks).map(([key, value]) => (
+          <SocialLink
+            name={key}
+            url={value}
+            icon={`mdi:${key.toLowerCase()}`}
+          />
+        ))
+      }
     </div>
-    <div class="flex flex-col bg-white p-8 md:rounded-lg flex-[3] border-t-4  border-[#eab308]">
-        <h1 class="text-4xl">{author.name} {author.alias && `(${author.alias})`}</h1>
-        <Divider/>
-        <p class="text-justify text-xl w-full pb-4">{author.bio}</p>
-        <div class="w-full">
-            {
-                Object.entries(author.networks).map(([key, value]) => (
-                <SocialLink 
-        name={key}
-        url={value}
-        icon={`mdi:${key.toLowerCase()}`}
-        />
-                ))
-            }
-        </div>
-    </div>
+  </div>
 </article>
 
-
 <style>
-    img {
-        @apply w-full md:aspect-square object-cover;
-    }
+  @reference "../../styles/global.css";
+  img {
+    @apply w-full md:aspect-square object-cover;
+  }
 </style>

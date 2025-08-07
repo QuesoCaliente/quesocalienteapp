@@ -1,6 +1,6 @@
 .mountain {
-  @apply text-gray-400;
-  mask: url("../../../../public/mountain.svg") no-repeat center;
+  color: var(--color-gray-400);
+  mask: url("/mountain.svg") no-repeat center;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
   width: 100%;
@@ -11,9 +11,25 @@
 
 .experienceListContainer {
   border: 1px solid #292929;
-  @apply lg:absolute top-0 right-0 bg-[#0c0c0c] w-full lg:w-96 p-6 opacity-75;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #0c0c0c;
+  width: 24rem; /* Equivalent to w-96 in Tailwind (384px) */
+  padding: 1.5rem; /* Equivalent to p-6 in Tailwind (24px) */
+  opacity: 0.75;
   border: 1px solid #292929;
-  .experienceListItem {
-    @apply bg-[#292929] w-full lg:w-52 px-4 py-2 rounded-lg text-white flex-auto;
-  }
+}
+
+.experienceListItem {
+  background-color: #292929;
+  width: 100%;
+  max-width: 13rem; /* Approximate for lg:w-52 (208px) */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  flex: 1 1 auto;
 }

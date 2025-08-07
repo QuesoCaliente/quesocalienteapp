@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Custom colors */
+@theme {
+  --color-brand-bg: #191716;
+  --color-brand-icon: #343a40;
+  --color-brand-yellow: #fae3ad;
+  --color-gold: #b58d03;
+  --color-primary: #fac304;
+  --color-paragraph: #e6e6e6;
+  --color-title: #f8f8f8;
+  --color-brand-linkedin: #0b65c3;
+  --color-brand-twitch: #9146ff;
+  --color-brand-twitter: #1da1f2;
+  --color-brand-discord: #5865f2;
+  --color-darkbackground: #1c1c1c;
+  --color-darksurface: #333333;
+  --color-cActiveMenu: #0f0f13;
+
+  /* Custom transition timing functions */
+  --ease-drop-out: cubic-bezier(0.7, 0.006, 0.2, 1);
+
+  /* Custom box shadows */
+  --shadow-elevation: 0 10px 15px rgb(17 24 39 / 10%),
+    0 4px 6px -2px rgb(17 24 39 / 5%);
+  --shadow-low: 0 1px 2px rgb(0 0 0 / 5%);
+}
