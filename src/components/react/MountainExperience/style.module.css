@@ -1,6 +1,6 @@
 .mountain {
   color: #9ca3af; /* text-gray-400 */
-  mask: url("../../../../public/mountain.svg") no-repeat center;
+  mask: url("/mountain.svg") no-repeat center;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
   width: 100%;

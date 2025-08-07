@@ -78,7 +78,10 @@ export function MountainExperience({ experiences }: Props) {
         <h1 className="text-title text-2xl mb-4">Lista de experiencias</h1>
         <div className={cn(["flex flex-col gap-3 text-paragraph"])}>
           {experiences.map((experience) => (
-            <div className="flex lg:flex-row flex-col items-center gap-2">
+            <div
+              key={experience.id}
+              className="flex lg:flex-row flex-col items-center gap-2"
+            >
               <FlagIcon
                 className={cn(
                   "size-8 md:size-12 text-yellow-50",

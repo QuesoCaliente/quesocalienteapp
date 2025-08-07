@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@tailwindcss/vite";
 import icon from "astro-icon";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 import { seoConfig } from "./src/utils/seoConfig";
 import react from '@astrojs/react';
 
