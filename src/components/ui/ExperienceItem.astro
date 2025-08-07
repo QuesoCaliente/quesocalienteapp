@@ -57,17 +57,20 @@ const opacity = `opacity-${bgOpacity}`;
     @apply size-8;
   }
   .title {
-    @apply text-4xl text-center font-bold text-slate-100 p-5;
+    @apply text-4xl text-center font-bold text-gray-900 dark:text-slate-100 p-5;
   }
   p {
-    @apply p-5;
+    @apply p-5 text-gray-700 dark:text-gray-300;
   }
   article {
-    @apply p-4  rounded-lg text-2xl shadow-md text-slate-200 dark:bg-[#0c0c0d];
+    @apply p-4 rounded-lg text-2xl shadow-md text-gray-800 dark:text-slate-200 bg-white dark:bg-[#0c0c0d];
+    border: 1px solid #e2e8f0;
+  }
+  .dark article {
     border: 1px solid #292929;
   }
   footer {
-    @apply text-xl p-5 text-slate-300;
+    @apply text-xl p-5 text-gray-600 dark:text-slate-300;
   }
 
   article {

@@ -21,7 +21,7 @@ const { frontmatter } = Astro.props;
             </a>
             <div>
               <time
-                class="capitalize text-gray-500"
+                class="capitalize text-gray-500 dark:text-gray-400"
                 datetime="2024-03-26T13:33:00-05:00"
               >
                 <FormattedDate date={new Date(frontmatter.updatedAt)} />
@@ -57,7 +57,7 @@ const { frontmatter } = Astro.props;
     @apply mt-10;
   }
   article {
-    @apply w-full bg-white min-h-screen p-10 md:rounded-lg shadow-elevation flex-1;
+    @apply w-full bg-white dark:bg-gray-900 min-h-screen p-10 md:rounded-lg shadow-elevation flex-1;
   }
   main {
     @apply md:py-12 w-full flex flex-col md:flex-row gap-8 mx-auto max-w-screen-lg;
@@ -66,7 +66,7 @@ const { frontmatter } = Astro.props;
     @apply hidden md:block md:w-64 bg-red-500;
   }
   h1 {
-    @apply text-2xl;
+    @apply text-2xl text-gray-900 dark:text-white;
   }
   header {
     @apply flex justify-between mb-7;

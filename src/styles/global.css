@@ -1,8 +1,10 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* Custom colors */
 @theme {
+  /* Dark theme colors (default) */
   --color-brand-bg: #191716;
   --color-brand-icon: #343a40;
   --color-brand-yellow: #fae3ad;
@@ -18,11 +20,23 @@
   --color-darksurface: #333333;
   --color-cActiveMenu: #0f0f13;
 
-  /* Component specific colors */
+  /* Component specific colors - Dark theme */
   --color-border-gray: #292929;
   --color-container-dark: #0c0c0c;
   --color-item-background: #292929;
   --color-text-primary: #ffffff;
+
+  /* Light theme colors */
+  --color-light-bg: #ffffff;
+  --color-light-surface: #f8fafc;
+  --color-light-border: #e2e8f0;
+  --color-light-text-primary: #1e293b;
+  --color-light-text-secondary: #64748b;
+  --color-light-accent: #3b82f6;
+  --color-light-container: #f1f5f9;
+  --color-light-item-background: #ffffff;
+
+  --shadow-material: 0 4px 6px -1px #1118271a, 0 2px 4px -1px #1118270d;
 
   /* Custom transition timing functions */
   --ease-drop-out: cubic-bezier(0.7, 0.006, 0.2, 1);
@@ -30,5 +44,7 @@
   /* Custom box shadows */
   --shadow-elevation: 0 10px 15px rgb(17 24 39 / 10%),
     0 4px 6px -2px rgb(17 24 39 / 5%);
+  --shadow-light-elevation: 0 10px 15px rgb(0 0 0 / 5%),
+    0 4px 6px -2px rgb(0 0 0 / 3%);
   --shadow-low: 0 1px 2px rgb(0 0 0 / 5%);
 }

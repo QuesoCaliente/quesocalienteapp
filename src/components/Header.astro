@@ -11,7 +11,10 @@ import Particles from "./ui/Particles.astro";
   <div class="hero">
     <a class="logo" href="/">
       <img id="logo-icon" src="/images/logo.svg" alt="Queso Caliente Logo" />
-      <h1 id="title-logo" class="text-white text-md md:text-xl font-bold">
+      <h1
+        id="title-logo"
+        class="text-gray-800 dark:text-white text-md md:text-xl font-bold"
+      >
         quesocaliente.dev
       </h1>
     </a>
@@ -23,6 +26,10 @@ import Particles from "./ui/Particles.astro";
   header {
     @apply relative overflow-hidden;
     backdrop-filter: blur(10px);
+    background-color: rgba(248, 250, 252, 0.7);
+    border: 0.2px solid #e2e8f0;
+  }
+  .dark header {
     background-color: #0a0a0ab3;
     border: 0.2px solid #50536d;
   }

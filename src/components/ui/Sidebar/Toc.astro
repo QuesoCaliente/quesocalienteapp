@@ -25,10 +25,13 @@ const { headings } = Astro.props;
 <style>
   @reference "@/styles/global.css";
   ul {
+    box-shadow: 2px 0 0 0 #e2e8f0 inset;
+  }
+  .dark ul {
     box-shadow: 2px 0 0 0 #d1d5db inset;
   }
   .toc-link {
-    @apply text-gray-100  transition-all duration-300 ease-in-out;
+    @apply text-gray-900 dark:text-gray-100 transition-all duration-300 ease-in-out;
     display: block;
     padding: 0.75rem 1rem;
     padding-left: 1.5rem;
@@ -38,12 +41,20 @@ const { headings } = Astro.props;
     text-overflow: ellipsis;
   }
   .toc-link:hover {
+    background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+    @apply text-gray-900;
+    box-shadow: 2px 0 0 0 #374151 inset;
+  }
+  .dark .toc-link:hover {
     background-color: rgb(209 213 219 / var(--tw-bg-opacity));
     @apply text-gray-800;
     box-shadow: 2px 0 0 0 #1f2937 inset;
   }
   .toc-link.active {
-    @apply bg-gray-300 font-medium text-gray-800;
+    @apply bg-gray-300 dark:bg-gray-300 font-medium text-gray-900 dark:text-gray-800;
+    box-shadow: 2px 0 0 0 #374151 inset;
+  }
+  .dark .toc-link.active {
     box-shadow: 2px 0 0 0 #1f2937 inset;
   }
 </style>

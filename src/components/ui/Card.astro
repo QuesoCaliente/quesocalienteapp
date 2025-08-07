@@ -41,7 +41,12 @@ const { title, slug, image, tags, description } = Astro.props;
 <style>
   @reference "@/styles/global.css";
   article {
-    @apply bg-[#0a0a0ab3] rounded-lg overflow-hidden relative;
+    @apply bg-white dark:bg-[#0a0a0ab3] rounded-lg overflow-hidden relative;
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 10%),
+      0 2px 4px -1px rgb(0 0 0 / 5%);
+  }
+  .dark article {
     box-shadow:
       0 4px 6px -1px rgb(255 255 255 / 10%),
       0 2px 4px -1px rgb(255 255 255 / 5%);
@@ -53,19 +58,19 @@ const { title, slug, image, tags, description } = Astro.props;
     @apply p-7;
   }
   .card-title {
-    @apply font-medium;
+    @apply font-medium text-gray-900 dark:text-white;
   }
   .card-text {
-    @apply text-paragraph mt-2;
+    @apply text-gray-700 dark:text-paragraph mt-2;
   }
   .card-tags {
     @apply mt-2 flex gap-2;
   }
   .card-footer {
-    @apply mt-4 text-gray-600 flex items-center flex-wrap gap-1 capitalize;
+    @apply mt-4 text-gray-500 dark:text-gray-600 flex items-center flex-wrap gap-1 capitalize;
   }
   .tag {
-    @apply text-yellow-400;
+    @apply text-blue-600 dark:text-yellow-400;
   }
   .card-body {
     @apply p-7 text-title;

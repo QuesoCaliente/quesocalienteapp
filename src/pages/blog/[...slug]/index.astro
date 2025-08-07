@@ -36,7 +36,7 @@ const author = await getEntry("authors", post.data.author.id);
             <h1>{post.data.title}</h1>
             <button
               aria-label="Guardar artículo en marcadores"
-              class="text-paragraph hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded"
+              class="dark:text-paragraph hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded"
             >
               <Icon name="mdi:bookmark" class="w-8 h-8" />
             </button>
@@ -55,7 +55,7 @@ const author = await getEntry("authors", post.data.author.id);
             </a>
             <div>
               <time
-                class="capitalize text-paragraph"
+                class="capitalize dark:text-paragraph"
                 datetime="2024-03-26T13:33:00-05:00"
               >
                 <FormattedDate date={new Date(post.data.updatedAt)} />
@@ -90,7 +90,7 @@ const author = await getEntry("authors", post.data.author.id);
       @apply mt-10;
     }
     article {
-      @apply w-full bg-[#0a0a0ab3] min-h-screen p-10 md:rounded-lg shadow-elevation flex-1;
+      @apply w-full dark:bg-[#0a0a0ab3] min-h-screen p-10 md:rounded-lg shadow-elevation flex-1;
     }
     main {
       @apply md:py-12 w-full flex flex-col md:flex-row gap-8 mx-auto max-w-screen-xl;
@@ -99,7 +99,7 @@ const author = await getEntry("authors", post.data.author.id);
       @apply hidden md:block md:w-64 bg-red-500;
     }
     h1 {
-      @apply text-2xl text-title;
+      @apply text-2xl dark:text-title;
     }
     header {
       @apply flex justify-between mb-7;

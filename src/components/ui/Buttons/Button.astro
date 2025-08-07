@@ -30,23 +30,29 @@ interface ButtonProps {
 
 // Estilos por variante
 const solid = {
-  default: "bg-neutral-300 text-neutral-900",
-  primary: "bg-primary text-darkbackground",
-  secondary: "bg-accent text-white",
-  success: "bg-ij-green text-white",
-  warning: "bg-ij-yellow text-white",
+  default:
+    "bg-neutral-300 dark:bg-neutral-600 text-neutral-900 dark:text-neutral-100",
+  primary: "bg-primary text-darkbackground dark:text-darkbackground",
+  secondary: "bg-gray-600 dark:bg-accent text-white",
+  success: "bg-green-600 dark:bg-ij-green text-white",
+  warning: "bg-yellow-600 dark:bg-ij-yellow text-white dark:text-white",
   danger: "bg-red-500 text-white",
-  foreground: "bg-black text-white",
+  foreground: "bg-gray-900 dark:bg-black text-white",
 };
 
 const bordered = {
-  default: "border-2 border-neutral-300 text-neutral-900",
+  default:
+    "border-2 border-neutral-300 dark:border-neutral-600 text-neutral-900 dark:text-neutral-100",
   primary: "border-2 border-primary text-primary",
-  secondary: "border-2 border-gray-500 text-gray-500",
-  success: "border-2 border-ij-green text-ij-green",
-  warning: "border-2 border-ij-yellow text-yellow-500",
+  secondary:
+    "border-2 border-gray-500 dark:border-gray-400 text-gray-500 dark:text-gray-400",
+  success:
+    "border-2 border-green-600 dark:border-ij-green text-green-600 dark:text-ij-green",
+  warning:
+    "border-2 border-yellow-600 dark:border-ij-yellow text-yellow-600 dark:text-yellow-500",
   danger: "border-2 border-red-500 text-red-500",
-  foreground: "border-2 border-black text-black",
+  foreground:
+    "border-2 border-gray-900 dark:border-black text-gray-900 dark:text-black",
 };
 
 const light = {

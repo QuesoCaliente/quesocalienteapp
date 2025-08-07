@@ -1,0 +1,57 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+  id="theme-toggle"
+  class="fixed top-4 right-4 z-50 p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 transition-all duration-200 hover:scale-110"
+  aria-label="Cambiar tema"
+>
+  <Icon
+    id="sun-icon"
+    name="mdi:white-balance-sunny"
+    class="w-5 h-5 text-yellow-500 dark:hidden"
+  />
+  <Icon
+    id="moon-icon"
+    name="mdi:moon-waning-crescent"
+    class="w-5 h-5 text-blue-400 hidden dark:block"
+  />
+</button>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.classList.contains("dark");
+
+    if (isDark) {
+      html.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    } else {
+      html.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    }
+  }
+
+  function initThemeToggle() {
+    const themeToggle = document.getElementById("theme-toggle");
+
+    if (!themeToggle) return;
+
+    // Remover listeners anteriores si existen
+    themeToggle.removeEventListener("click", toggleTheme);
+
+    // Agregar el listener
+    themeToggle.addEventListener("click", toggleTheme);
+  }
+
+  // Inicializar cuando el DOM esté listo
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initThemeToggle);
+  } else {
+    initThemeToggle();
+  }
+
+  // Re-inicializar en navegación de Astro
+  document.addEventListener("astro:page-load", initThemeToggle);
+</script>
