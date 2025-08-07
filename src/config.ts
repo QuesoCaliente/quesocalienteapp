@@ -152,17 +152,17 @@ export const PROJECTS: Project[] = [
     status: "active",
     featured: true,
   },
-  {
-    id: "koikatsu",
-    title: "Koikatsu FanSite",
-    description: "Aplicación para gestionar noticias y mangas de Koikatsu",
-    link: "https://koikatsu-character-manager.vercel.app/",
-    image: "/images/projects/koikatsu/image1.webp",
-    github: PROJECT_REPOSITORIES.koikatsu,
-    technologies: ["React", "TypeScript", "File Management"],
-    status: "completed",
-    featured: false,
-  },
+  // {
+  //   id: "koikatsu",
+  //   title: "Koikatsu FanSite",
+  //   description: "Aplicación para gestionar noticias y mangas de Koikatsu",
+  //   link: "https://koikatsu-character-manager.vercel.app/",
+  //   image: "/images/projects/koikatsu/image1.webp",
+  //   github: PROJECT_REPOSITORIES.koikatsu,
+  //   technologies: ["React", "TypeScript", "File Management"],
+  //   status: "completed",
+  //   featured: false,
+  // },
 ];
 
 // Proyectos destacados (featured)
