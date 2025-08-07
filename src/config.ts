@@ -49,18 +49,18 @@ export const SOCIAL_LINKS: Record<string, SocialLink> = {
   },
   discord: {
     name: "Discord",
-    url: "https://discord.gg/whjkMeTKRN",
+    url: "https://discord.gg/3gzsBR3S",
     icon: "mdi:discord",
   },
   twitch: {
     name: "Twitch",
-    url: "https://twitch.tv/quesocaliente0",
+    url: "https://twitch.tv/quesocalientev0",
     icon: "mdi:twitch",
     username: "quesocaliente0",
   },
   instagram: {
     name: "Instagram",
-    url: "https://instagram.com/quesocaliente0",
+    url: "https://instagram.com/quesocalientedev",
     icon: "mdi:instagram",
     username: "quesocaliente0",
   },
