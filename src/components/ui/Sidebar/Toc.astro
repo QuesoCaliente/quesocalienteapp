@@ -41,8 +41,7 @@ const { headings } = Astro.props;
     text-overflow: ellipsis;
   }
   .toc-link:hover {
-    background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-    @apply text-gray-900;
+    @apply dark:text-gray-900 bg-gray-300;
     box-shadow: 2px 0 0 0 #374151 inset;
   }
   .dark .toc-link:hover {

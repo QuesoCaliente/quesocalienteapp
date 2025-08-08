@@ -5,6 +5,7 @@ import DropDown from "./DropDown/DropDown.astro";
 import DropDownLink from "./DropDown/DropDownLink.astro";
 import DropDownTitle from "./DropDown/DropDownTitle.astro";
 import { HERO_SOCIAL_LINKS } from "@/config";
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <div class="flex gap-2 items-center">
@@ -13,6 +14,7 @@ import { HERO_SOCIAL_LINKS } from "@/config";
       <Button
         class="border-none text-3xl hover:text-primary hover:bg-transparent text-paragraph p-0"
         size="icon"
+        as="link"
         iconOnly
         color="default"
         radius="none"
@@ -25,6 +27,7 @@ import { HERO_SOCIAL_LINKS } from "@/config";
       />
     ))
   }
+  <ThemeToggle />
   <button
     id="dropdownButton"
     class="cursor-pointer transition-transform duration-500 ease-in-out"

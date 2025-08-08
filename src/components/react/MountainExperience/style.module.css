@@ -24,7 +24,7 @@
 @media (min-width: 1024px) {
   .experienceListContainer {
     position: absolute; /* lg:absolute */
-    top: 0; /* top-0 */
+    top: 15%; /* top-0 */
     right: 0; /* right-0 */
     width: 24rem; /* lg:w-96 */
   }

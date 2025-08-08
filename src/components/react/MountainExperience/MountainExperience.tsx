@@ -20,12 +20,10 @@ interface Props {
 }
 
 export function MountainExperience({ experiences }: Props) {
-  const [selectedCompanie, setSelectedCompanie] = useState<string | null>(
-    "Belray"
-  );
+  const [selectedCompanie, setSelectedCompanie] = useState<string | null>(null);
   return (
     <div className="w-full flex lg:flex-col flex-col-reverse">
-      <h1 className="text-center text-title font-bold text-xl">
+      <h1 className="text-center dark:text-title font-bold text-xl">
         {selectedCompanie ?? (
           <span>
             <span className="text-yellow-500 font-bold">
@@ -53,7 +51,7 @@ export function MountainExperience({ experiences }: Props) {
                   <h3 className="text-center text-title font-bold text-2xl">
                     {experience.title}
                   </h3>
-                  <p className="text-gray-500 dark:text-gray-400 text-xl">
+                  <p className="text-paragraph dark:text-gray-400 text-xl">
                     {experience.description}
                   </p>
                   <p className="text-yellow-500 dark:text-yellow-400 text-base">

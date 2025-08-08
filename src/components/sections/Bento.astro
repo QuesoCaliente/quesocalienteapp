@@ -18,9 +18,13 @@ const image = lastPost.data.image;
       <div class="p-12 lg:p-16 flex flex-col gap-6">
         <div class="flex flex-col gap-2 title">
           <h1 class="">Desarrollador <span>de Software</span></h1>
-          <span class="text-paragraph">Capitan QuesoCaliente en servicio</span>
+          <span class="dark:text-paragraph"
+            >Capitan QuesoCaliente en servicio</span
+          >
         </div>
         <Button
+          as="link"
+          href={SOCIAL_LINKS.linkedin.url}
           class="w-fit px-4 py-2 md:px-8 md:py-4 rounded-lg flex font-semibold text-lg md:text-xl"
           radius="none">Conectemos en Linkedin</Button
         >
@@ -39,7 +43,7 @@ const image = lastPost.data.image;
       aria-label="Visitar repositorios de GitHub - QuesoCaliente"
     >
       <h1
-        class="text-4xl font-normal px-9 py-8 text-center text-white group-hover:scale-110 duration-200 transition-transform delay-75"
+        class="text-4xl font-normal px-9 py-8 text-center dark:text-white group-hover:scale-110 duration-200 transition-transform delay-75"
       >
         Visita mis <span class="text-[#B58D03] font-semibold">repositorios</span
         >
@@ -57,7 +61,7 @@ const image = lastPost.data.image;
       target="_blank"
       aria-label="Acceder a la librería de recursos de desarrollo"
     >
-      <h1 class="text-4xl font-normal px-14 py-14 text-center text-white">
+      <h1 class="text-4xl font-normal px-14 py-14 text-center dark:text-white">
         Libreria de <span class="text-[#B58D03] font-semibold">recursos</span>
       </h1>
     </a>
@@ -70,21 +74,19 @@ const image = lastPost.data.image;
     @apply grid grid-cols-12 gap-4 p-4 md:p-0 mx-4 max-w-screen-xl lg:mx-auto;
   }
   .linkedin-container {
-    @apply col-span-12 text-title  border-1 border-[#292929] lg:col-span-8 row-span-2 bg-[#0c0c0d] rounded-lg;
+    @apply col-span-12 bg-white  dark:text-title  dark:border-1 dark:border-[#292929] lg:col-span-8 row-span-2 dark:bg-[#0c0c0d] rounded-lg;
     a {
       @apply relative overflow-hidden flex flex-col;
     }
   }
   .my-repository-container {
-    @apply col-span-12 md:col-span-6 lg:col-span-4 row-span-1 bg-[#0c0c0d] rounded-lg;
-    border: 1px solid #292929;
+    @apply col-span-12 md:col-span-6 lg:col-span-4 row-span-1 bg-white  dark:bg-[#0c0c0d] dark:border-[#292929] dark:border-1 rounded-lg;
     a {
       @apply relative overflow-hidden flex flex-col;
     }
   }
   .my-library-container {
-    @apply col-span-12 md:col-span-6 flex justify-center items-center  lg:col-span-4 row-span-1 bg-[#0c0c0d] rounded-lg;
-    border: 1px solid #292929;
+    @apply col-span-12 md:col-span-6 flex justify-center items-center  lg:col-span-4 row-span-1 bg-white dark:bg-[#0c0c0d] dark:border-[#292929] dark:border-1 rounded-lg;
     a {
       @apply relative overflow-hidden flex flex-col;
     }
@@ -94,5 +96,8 @@ const image = lastPost.data.image;
   }
   .title > span {
     @apply text-2xl font-normal;
+  }
+  article {
+    @apply shadow-material dark:shadow-none;
   }
 </style>
