@@ -1,38 +1,36 @@
 ---
 interface Props {
-    title: string;
-    sticky?: boolean;
-    showMobile?: boolean;
+  title: string;
+  sticky?: boolean;
+  showMobile?: boolean;
 }
-const { title, sticky, showMobile=true } = Astro.props;
+const { title, sticky, showMobile = true } = Astro.props;
 
 const widgetClasses = [
-    'widget',
-    sticky ? 'sticky top-6' : '',
-    !showMobile ? 'hidden md:block' : '',
-].join(' ');
+  "widget",
+  sticky ? "sticky top-6" : "",
+  !showMobile ? "hidden md:block" : "",
+].join(" ");
 ---
 
-
 <div class={`widget ${widgetClasses}`}>
-    <div class="widget-title">
-        <span>{title}</span>
-    </div>
-    <div class="widget-content">
-        <slot/>
-        </div>
+  <div class="widget-title">
+    <span>{title}</span>
+  </div>
+  <div class="widget-content">
+    <slot />
+  </div>
 </div>
 
-
 <style>
-    .widget {
-        
-    }
+  @reference "@/styles/global.css";
+  .widget {
+  }
 
-    .widget-title {
-        @apply mb-5
-    }
-    .widget-title span {
-        @apply text-gray-700 font-semibold text-base inline-block;
-    }
+  .widget-title {
+    @apply mb-5;
+  }
+  .widget-title span {
+    @apply text-gray-900 dark:text-title font-semibold text-base inline-block;
+  }
 </style>

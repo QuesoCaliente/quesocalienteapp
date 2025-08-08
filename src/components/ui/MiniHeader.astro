@@ -1,0 +1,49 @@
+---
+import { Icon } from "astro-icon/components";
+import Particles from "./Particles.astro";
+import SocialHero from "./SocialHero.astro";
+import DropDown from "./DropDown/DropDown.astro";
+import DropDownTitle from "./DropDown/DropDownTitle.astro";
+import DropDownLink from "./DropDown/DropDownLink.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<header class="header">
+  <button id="menu" class="navbar-item cursor-pointer hidden">
+    <span class="sr-only">Menu</span>
+    <Icon class="text-white size-6" name="feather:menu" />
+  </button>
+  <a
+    class="logo"
+    href="/"
+    aria-label="Ir a la página principal de QuesoCaliente"
+  >
+    <img
+      class="size-9"
+      id="logo-icon"
+      src="/images/logo.svg"
+      alt="Queso Caliente Logo"
+    />
+    <h1 id="title-logo" class="text-white text-md md:text-xl font-bold">
+      QuesoCaliente
+    </h1>
+  </a>
+  <SocialHero />
+  <DropDown>
+    <DropDownTitle title="Panel de Control" />
+    <DropDownLink href="/blog" title="Blog" />
+    <DropDownLink href="/legal-terms" title="Terminos y Condiciones" />
+  </DropDown>
+</header>
+
+<style>
+  @reference "@/styles/global.css";
+  header {
+    @apply flex justify-between  bg-[#0a0a0a] dark:bg-[#0a0a0ab3] items-center flex-col md:flex-row gap-4 md:gap-8 relative z-[1] max-w-screen-xl mx-8 md:mx-auto px-11 py-6 rounded-lg my-8;
+    backdrop-filter: blur(2px);
+    border: 0.2px solid #50536d;
+  }
+  .logo {
+    @apply flex  items-center gap-3;
+  }
+</style>

@@ -1,46 +1,47 @@
 ---
-import AuthorDetails from "@/components/ui/Author/AuthorDetails.astro"
-import SidebarPost from "@/components/ui/Sidebar/SidebarPost.astro"
-import Layout from "@/layouts/Layout.astro"
-import { getEntry } from "astro:content"
+import AuthorDetails from "@/components/ui/Author/AuthorDetails.astro";
+import SidebarPost from "@/components/ui/Sidebar/SidebarPost.astro";
+import Layout from "@/layouts/Layout.astro";
+import { getEntry } from "astro:content";
 
-const {alias} = Astro.params
+const { alias } = Astro.params;
 
 if (!alias) {
   return {
     status: 404,
-    body: 'Not found'
-  }
+    body: "Not found",
+  };
 }
 
-const author = await getEntry('authors', alias!)
+const author = await getEntry("authors", alias!);
 
 if (!author) {
   return {
     status: 404,
-    body: 'Not found'
-  }
+    body: "Not found",
+  };
 }
-
-
 ---
 
-<Layout title=`Autor ${author.data.name} - quesocaliente.dev` description={author.data.bio}>
-    <main>
-        <div class="main-content">
-            <AuthorDetails author={author.data} />
-        </div>
-        <SidebarPost />
-    </main>
+<Layout
+  title=`Autor ${author.data.name} - quesocaliente.dev`
+  description={author.data.bio}
+  showHero
+>
+  <main>
+    <div class="main-content">
+      <AuthorDetails author={author.data} />
+    </div>
+    <SidebarPost />
+  </main>
 </Layout>
 
-
 <style>
-      main {
+  @reference "@/styles/global.css";
+  main {
     @apply md:py-12 py-4 w-full flex flex-col md:flex-row gap-8 mx-auto max-w-screen-xl min-h-screen;
   }
   .main-content {
     @apply max-w-screen-xl lg:mx-auto mx-5 flex-1;
   }
-
 </style>

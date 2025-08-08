@@ -1,0 +1,33 @@
+---
+import { SOCIAL_LINKS } from "@/config";
+import Button from "../ui/Buttons/Button.astro";
+---
+
+<section class="p-4">
+  <h1 class="text-title text-5xl text-balance max-w-2xl relative z-[2]">
+    Trabajemos juntos en tu proximo proyecto
+  </h1>
+  <a
+    class="bg-gold md:w-fit z-[2] md:px-16 w-full hover:opacity-80 py-4 rounded"
+    href={SOCIAL_LINKS.linkedin.url}>¡Hablemos!</a
+  >
+</section>
+
+<style>
+  @reference "@/styles/global.css";
+  section {
+    @apply flex flex-col items-center justify-center text-center bg-[#0c0c0d] h-[550px] max-w-screen-xl mx-4 lg:mx-auto lg:w-full gap-10 relative overflow-hidden mb-[60px];
+    border: 1px solid #292929;
+  }
+  section::before {
+    content: "";
+    position: absolute;
+    background-repeat: repeat;
+    z-index: 1;
+    height: 100%;
+    pointer-events: none;
+    opacity: 50%;
+    width: 100%;
+    background-image: url("/images/pattern-cheese.svg");
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+title: "Términos Legales"
+description: "Términos y condiciones de uso"
+updatedAt: "2024-03-26T13:33:00-05:00"
+---
+
+<p>Por favor, lee atentamente estos términos y condiciones antes de utilizar el sitio web QuesoCaliente (en adelante, "el Sitio").</p>
+
+<h2>Aceptación de los Términos</h2>
+
+<p>Al acceder y utilizar el Sitio, aceptas estar legalmente vinculado por los términos y condiciones establecidos en este documento. Si no estás de acuerdo con alguno de estos términos, por favor, abstente de utilizar el Sitio.</p>
+
+<h2>Uso del Sitio</h2>
+
+<p>El Sitio QuesoCaliente, accesible en https://www.quesocaliente.dev/, está destinado únicamente para fines informativos y de entretenimiento. Puedes utilizar este Sitio para acceder a artículos, tutoriales y recursos relacionados con el desarrollo web, así como para acceder a su portafolio y blog personal.</p>
+
+<h2>Derechos de Propiedad Intelectual</h2>
+
+<p>Todo el contenido publicado en el Sitio, incluyendo pero no limitado a textos, imágenes, gráficos, logotipos y vídeos, está protegido por derechos de propiedad intelectual y es propiedad exclusiva del Sitio QuesoCaliente, a menos que se indique lo contrario. No tienes derecho a utilizar, reproducir, modificar o distribuir ningún contenido del Sitio sin el consentimiento expreso del propietario.</p>
+
+<h2>Comentarios y Participación del Usuario</h2>
+
+<p>Al participar en secciones interactivas del Sitio, como comentarios en artículos o foros de discusión, aceptas hacerlo de manera respetuosa y conforme a las normas establecidas por el Sitio QuesoCaliente. El Sitio se reserva el derecho de eliminar cualquier contenido que considere inapropiado o que viole estos términos y condiciones.</p>
+
+<h2>Limitación de Responsabilidad</h2>
+
+<p>El Sitio QuesoCaliente no se hace responsable por cualquier daño directo, indirecto, incidental, especial, consecuente o punitivo que pueda surgir del uso o la imposibilidad de utilizar el Sitio, incluso si se ha advertido de la posibilidad de tales daños.</p>
+
+<h2>Modificaciones de los Términos y Condiciones</h2>
+
+<p>El Sitio QuesoCaliente se reserva el derecho de modificar estos términos y condiciones en cualquier momento y sin previo aviso. Se recomienda revisar periódicamente esta página para estar al tanto de cualquier cambio. El uso continuado del Sitio después de la publicación de los cambios constituirá tu aceptación de dichos cambios.</p>
+
+<h2>Ley Aplicable</h2>
+<p>Estos términos y condiciones se rigen por las leyes del lugar de residencia del Sitio QuesoCaliente, sin tener en cuenta sus disposiciones sobre conflictos de leyes.</p>
+
+<h2>Contacto</h2>
+
+<p>Si tienes alguna pregunta o inquietud sobre estos términos y condiciones, por favor, ponte en contacto con el Sitio QuesoCaliente a través de la información de contacto proporcionada en el Sitio.</p>
+
+<p>Al utilizar el Sitio, aceptas estos términos y condiciones en su totalidad. Si no estás de acuerdo con estos términos, por favor, no utilices el Sitio.</p>

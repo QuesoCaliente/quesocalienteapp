@@ -4,30 +4,35 @@ import Card from "@/components/ui/Card.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blog")).sort((a,b) => new Date(b.data.updatedAt).valueOf() - new Date(a.data.updatedAt).valueOf());
+const posts = (await getCollection("blog")).sort(
+  (a, b) =>
+    new Date(b.data.updatedAt).valueOf() - new Date(a.data.updatedAt).valueOf()
+);
 ---
-<Layout title="Blog - quesocaliente.dev" description="Explora las últimas publicaciones sobre tecnología y herramientas para el desarrollo de software">
-<main>
+
+<Layout
+  showHero
+  title="Blog - quesocaliente.dev"
+  description="Explora las últimas publicaciones sobre tecnología y herramientas para el desarrollo de software"
+>
+  <main>
     <div class="main-content">
-      <SectionTitle title="Blog" description="Explora las últimas publicaciones sobre tecnología y herramientas para el desarrollo de software" />
+      <SectionTitle
+        title="Blog"
+        description="Explora las últimas publicaciones sobre tecnología y herramientas para el desarrollo de software"
+      />
       <section class="blog-list">
-  
-        {posts.map((post) => (
-          <Card
-          slug={`/blog/${post.slug}`}
-          {...post.data}
-          />
-        ))
-      }
-        </section>
+        {posts.map((post) => <Card slug={`/blog/${post.id}`} {...post.data} />)}
+      </section>
     </div>
-</main>
+  </main>
 </Layout>
 
 <style>
+  @reference "@/styles/global.css";
   .blog-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(min(100%,25rem),1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
     gap: 1rem;
   }
   @media (max-width: 600px) {
@@ -39,6 +44,6 @@ const posts = (await getCollection("blog")).sort((a,b) => new Date(b.data.update
     @apply mt-20 mb-20;
   }
   .main-content {
-    @apply max-w-screen-xl lg:mx-auto mx-5 ;
+    @apply max-w-screen-xl lg:mx-auto mx-5;
   }
 </style>

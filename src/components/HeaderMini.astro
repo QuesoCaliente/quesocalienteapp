@@ -3,20 +3,31 @@ import { Icon } from "astro-icon/components";
 import DropDown from "./ui/DropDown/DropDown.astro";
 import DropDownTitle from "./ui/DropDown/DropDownTitle.astro";
 import DropDownLink from "./ui/DropDown/DropDownLink.astro";
-
 ---
 
 <header>
   <div class="navbar">
-    <button id="menu" class="navbar-item cursor-pointer">
+    <button
+      id="menu"
+      class="navbar-item cursor-pointer"
+      aria-label="Abrir menú de navegación"
+    >
       <span class="sr-only">Menu</span>
       <Icon class="text-white size-6" name="feather:menu" />
     </button>
     <a class="logo" href="/">
-      <h1 class="text-white text-md md:text-lg font-medium">quesocaliente.dev</h1>
+      <h1 class="text-white text-md md:text-lg font-medium">
+        quesocaliente.dev
+      </h1>
     </a>
     <div class="navbar-item relative ml-auto md:ml-0">
-      <button id="dropdownButton" class="cursor-pointer transition-transform duration-500 ease-in-out">
+      <button
+        id="dropdownButton"
+        class="cursor-pointer transition-transform duration-500 ease-in-out"
+        aria-label="Abrir menú desplegable"
+        aria-expanded="false"
+        aria-haspopup="true"
+      >
         <Icon class="text-white size-6" name="mdi:dots-vertical" />
       </button>
       <DropDown>
@@ -29,6 +40,7 @@ import DropDownLink from "./ui/DropDown/DropDownLink.astro";
 </header>
 
 <style>
+  @reference "@/styles/global.css";
   header {
     @apply bg-brand-bg relative;
   }
@@ -55,28 +67,33 @@ import DropDownLink from "./ui/DropDown/DropDownLink.astro";
   }
 </style>
 
-
 <script>
+  document.addEventListener("astro:page-load", () => {
+    const dropdownButton = document.querySelector(
+      "#dropdownButton"
+    ) as HTMLButtonElement | null;
 
-  document.addEventListener('astro:page-load', () => {
-    const dropdownButton = document.querySelector('#dropdownButton') as HTMLButtonElement | null;
-	
-	const dropDownMenu = document.querySelector('.dropdown') as HTMLDivElement | null;
-	  if (dropdownButton && dropDownMenu) {
+    const dropDownMenu = document.querySelector(
+      ".dropdown"
+    ) as HTMLDivElement | null;
+    if (dropdownButton && dropDownMenu) {
       // Escuchar clics en todo el documento
-      document.addEventListener('click', (e) => {
-        if (!dropDownMenu.contains(e.target as Node) && !dropdownButton.contains(e.target as Node))  {
-          dropDownMenu.classList.remove('is-active');
-          dropdownButton.classList.remove('rotate-90');
+      document.addEventListener("click", (e) => {
+        if (
+          !dropDownMenu.contains(e.target as Node) &&
+          !dropdownButton.contains(e.target as Node)
+        ) {
+          dropDownMenu.classList.remove("is-active");
+          dropdownButton.classList.remove("rotate-90");
+          dropdownButton.setAttribute("aria-expanded", "false");
         }
       });
 
-
-      dropdownButton.addEventListener('click', () => {
-      dropDownMenu.classList.toggle('is-active');
-      dropdownButton.classList.toggle('rotate-90');
+      dropdownButton.addEventListener("click", () => {
+        const isOpen = dropDownMenu.classList.toggle("is-active");
+        dropdownButton.classList.toggle("rotate-90");
+        dropdownButton.setAttribute("aria-expanded", isOpen.toString());
       });
-	  }
-  })
-
+    }
+  });
 </script>

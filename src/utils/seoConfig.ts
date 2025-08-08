@@ -1,3 +1,5 @@
+import { SEO_CONFIG } from "../config";
+
 export const seoConfig = {
   baseURL: "http://www.quesocaliente.dev/", // Production URL.
   description:
@@ -12,5 +14,7 @@ export const seoConfig = {
   siteName: "quesocaliente.dev",
   twitter: {
     card: "summary_large_image",
+    site: SEO_CONFIG.twitter.site,
+    creator: SEO_CONFIG.twitter.creator,
   },
 };

@@ -1,71 +1,78 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
 
 type Props = CollectionEntry<"blog">["data"] & {
-    slug: string;
+  slug: string;
 };
 
 const { title, slug, image, tags, description } = Astro.props;
 ---
 
 <article>
-    <div class="card-content">
-        <header>
-            <a href={slug} class="card-image">
-                <img transition:name={title} src={image}/>
+  <div class="card-content">
+    <header>
+      <a href={slug} class="card-image">
+        <img transition:name={title} src={image} />
+      </a>
+    </header>
+    <div class="card-body">
+      <h3 class="card-title">
+        {title}
+      </h3>
+      <p class="card-text line-clamp-2">
+        {description}
+      </p>
+      <div class="card-tags">
+        {
+          tags.map((tag) => (
+            <a href="" class="tag">
+              #{tag}
             </a>
-        </header>
-        <div class="card-body">
-            <h3 class="card-title">
-                {title}
-            </h3>
-            <p class="card-text line-clamp-2">
-                {description}
-            </p>
-            <div class="card-tags">
-                {tags.map((tag) => (
-                    <a href="" class="tag">#{tag}</a>
-                ))}
-            </div>
-            <footer>
-                <a href="" class="card-footer">
-                    
-                </a>
-            </footer>
-        </div>
+          ))
+        }
+      </div>
+      <footer>
+        <a href="" class="card-footer"> </a>
+      </footer>
     </div>
+  </div>
 </article>
 
-
 <style>
-    article {
-        @apply bg-white rounded-lg overflow-hidden relative;
-        box-shadow: 0 4px 6px -1px rgb(17 24 39 / 10%), 0 2px 4px -1px rgb(17 24 39 / 5%);
-    }
-    .card-image img {
-        @apply w-full h-48 object-cover;
-    }
-    .card-body {
-        @apply p-7;
-    }
-    .card-title {
-        @apply font-medium ;
-    }
-    .card-text {
-        @apply text-gray-600 mt-2;
-    }
-    .card-tags {
-        @apply mt-2 flex gap-2;
-    }
-    .card-footer {
-        @apply mt-4 text-gray-600 flex items-center flex-wrap gap-1 capitalize;
-    }
-    .tag {
-        @apply text-yellow-700;
-    }
-    .card-body {
-        @apply p-7 text-gray-600
-    }
-
-
+  @reference "@/styles/global.css";
+  article {
+    @apply bg-white dark:bg-[#0a0a0ab3] rounded-lg overflow-hidden relative;
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 10%),
+      0 2px 4px -1px rgb(0 0 0 / 5%);
+  }
+  .dark article {
+    box-shadow:
+      0 4px 6px -1px rgb(255 255 255 / 10%),
+      0 2px 4px -1px rgb(255 255 255 / 5%);
+  }
+  .card-image img {
+    @apply w-full h-48 object-cover;
+  }
+  .card-body {
+    @apply p-7;
+  }
+  .card-title {
+    @apply font-medium text-gray-900 dark:text-white;
+  }
+  .card-text {
+    @apply text-gray-700 dark:text-paragraph mt-2;
+  }
+  .card-tags {
+    @apply mt-2 flex gap-2;
+  }
+  .card-footer {
+    @apply mt-4 text-gray-500 dark:text-gray-600 flex items-center flex-wrap gap-1 capitalize;
+  }
+  .tag {
+    @apply text-blue-600 dark:text-yellow-400;
+  }
+  .card-body {
+    @apply p-7 text-title;
+  }
 </style>

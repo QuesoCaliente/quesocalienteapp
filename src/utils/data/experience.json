@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "title": "Ingeniero de Software",
+        "company": "Belray",
+        "description": "Mantener y asegurar la calidad de las interfaces de las aplicaciones, con un enfoque centrado en el usuario. Garantizar la creación de interfaces limpias y funcionales que proporcionen una experiencia óptima de navegación.",
+        "logo": "/companies/belray.svg",
+        "period": "2022 - Actualidad",
+        "x": "50%",
+        "y": "6%" 
+    },
+    {
+        "id": "2",
+        "title": "Desarrollo Full Stack - ElectroAlegria",
+        "company": "ElectroAlegria",
+        "description": "Desarrollo de Sistema para gestión de facturas y ordenes de trabajo interna",
+        "logo": "/companies/electroalegria.svg",
+        "period": "2022",
+        "x": "72%",
+        "y": "48%"
+    },
+    {
+        "id": "3",
+        "title": "Freelance - Scraping y automatización de procesos",
+        "company": "Scraping y automatización de procesos",
+        "description": "Desarrollo de aplicaciones para la automatización de procesos, extracción de datos y análisis de información. Utilizando herramientas como Python, Selenium, Scrapy, Pandas, entre otras.",
+        "logo": "/companies/scraping.svg",
+        "period": "2019 - 2021",
+        "x": "40%",
+        "y": "70%"
+    }
+]

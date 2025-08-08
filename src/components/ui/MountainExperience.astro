@@ -1,0 +1,68 @@
+---
+import { Icon } from "astro-icon/components";
+import mountain from "../../icons/mountain.svg?raw";
+
+interface ExperienceItemProps {
+  id: string;
+  title: string;
+  company: string;
+  description: string;
+  logo: string;
+  period: string;
+  x: string;
+  y: string;
+}
+
+interface Props {
+  experiences: ExperienceItemProps[];
+}
+
+const { experiences } = Astro.props;
+
+const experienceTranslateStyles = (x: string, y: string) => {
+  return `top: ${y}; left: ${x}`;
+};
+
+const experiencesWithStyles = experiences.map((experience) => {
+  return {
+    ...experience,
+    style: experienceTranslateStyles(experience.x, experience.y),
+  };
+});
+---
+
+<div class="w-full relative">
+  <!-- <Icon name="mountain" class="h-[800px] text-primary/80 w-full aspect-video" /> -->
+  <div class="w-full relative">
+    <div class="mountain"></div>
+    {
+      experiencesWithStyles.map((experience) => (
+        <div
+          style={experience.style}
+          class={`text-black absolute top-0 left-0 animate-pulse`}
+        >
+          <Icon
+            name="flag"
+            class={
+              "size-8 md:size-12 p-1 md:p-2 text-yellow-50 ring-2 md:ring-4 ring-gray-500/80 rounded-full ring-offset-1 md:ring-offset-2 ring-offset-[#292929]-400 bg-[#0a0a0ab3]"
+            }
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  @reference "@/styles/global.css";
+  .mountain {
+    @apply text-gray-400;
+    mask: url("/mountain.svg") no-repeat center;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    background-color: currentColor;
+    aspect-ratio: 16 / 9;
+  }
+</style>

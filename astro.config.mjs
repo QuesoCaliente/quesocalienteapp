@@ -1,8 +1,9 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
+import tailwind from "@tailwindcss/vite";
 import icon from "astro-icon";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 import { seoConfig } from "./src/utils/seoConfig";
+import react from '@astrojs/react';
 
 import mdx from "@astrojs/mdx";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -14,7 +15,13 @@ const options = {
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), icon(), mdx()],
+  vite: {
+    plugins: [tailwind()],
+  },
+  integrations: [icon(), mdx({
+    remarkPlugins: [],
+    rehypePlugins: [],
+  }), react()],
   output: "server",
   adapter: vercel(),
   site: seoConfig.baseURL,

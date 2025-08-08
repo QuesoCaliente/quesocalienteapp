@@ -1,15 +1,14 @@
 ---
-import type { HTMLTag } from 'astro/types'
+import type { HTMLTag } from "astro/types";
 
 interface Props {
-  htmlAs?: string
+  htmlAs?: string;
 }
 
-const { htmlAs} = Astro.props
-const Tag = (htmlAs || 'h1') as HTMLTag
+const { htmlAs } = Astro.props;
+const Tag = (htmlAs || "h1") as HTMLTag;
 ---
 
-
-<Tag class="text-2xl text-gray-950 font-bold py-6">
-  <slot/>
+<Tag class="text-2xl text-gray-950 dark:text-title font-bold py-6">
+  <slot />
 </Tag>
