@@ -25,6 +25,14 @@ export const CATEGORIES = [
   { id: 24, name: "PHP" },
   { id: 25, name: "Inteligencia Artificial" },
   { id: 26, name: "Utilidades" },
+  { id: 27, name: "Automatización" },
+  { id: 28, name: "Desarrollo Web" },
+  { id: 29, name: "Desarrollo Móvil" },
+  { id: 30, name: "Bases de Datos" },
+  { id: 31, name: "Seguridad Informática" },
+  { id: 32, name: "DevOps" },
+  { id: 33, name: "Cloud Computing" },
+  { id: 34, name: "Blockchain" },
 ] as const;
 
 export const CATEGORIES_NAMES = CATEGORIES.map((category) => category.name) as [
