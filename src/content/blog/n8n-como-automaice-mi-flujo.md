@@ -13,7 +13,7 @@ tags: ["astro", "n8n", "automatización", "discord", "github"]
 
 Si alguna vez has querido **automatizar procesos en tu web sin gastar dinero**, este tutorial es para ti.
 
-En esta guía no me voy a detener en cómo instalar **n8n** (para eso ya existen muchos tutoriales). Lo que quiero es mostrarte **cómo logré automatizar la publicación de entradas en un blog creado con Astro**, lo que me facilita muchísimo subir recursos para desarrolladores de manera rápida y sin tanta fricción.
+En esta guía no me voy a detener en cómo instalar **n8n** (para eso ya existen muchos tutoriales). Lo que quiero es mostrarte **cómo logré automatizar la publicación de entradas en un blog creado con Astro**, lo que me facilita muchísimo subir recursos para desarrolladores de manera rápida y sin tanto tiempo perdido en crear el archivo en github y subirlo.
 
 ---
 
@@ -23,7 +23,7 @@ Astro cuenta con un sistema llamado **Content Collections**, que permite organiz
 
 - Tipado automático para el contenido.
 - Organización clara y estructurada.
-- Integración sencilla con el flujo de build.
+- Integración sencilla con el flujo de empaquetado de la aplicación.
 
 El problema: cada vez que quería publicar un recurso debía crear manualmente el archivo Markdown y subirlo al repositorio. Esto hacía que el proceso fuera lento y poco práctico para la web donde comparto recursos.
 
