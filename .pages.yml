@@ -24,15 +24,14 @@ content:
         type: string
       - name: tags
         label: Tags
-        type: list
-        of:
-          type: string
-      - name: author
-        label: Autor
-        type: reference
-        options:
-          collection: authors
-          multiple: false
+        list: true
+        fields:
+        - name: author
+          label: Autor
+          type: reference
+          options:
+            collection: authors
+            multiple: false
 
   - name: pages
     label: Páginas
