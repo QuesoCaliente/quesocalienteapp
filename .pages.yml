@@ -1,0 +1,84 @@
+content:
+  - name: blog
+    label: Blog
+    type: collection
+    path: src/content/blog
+    fields:
+      - name: image
+        label: Imagen
+        type: string
+      - name: title
+        label: Título
+        type: string
+      - name: description
+        label: Descripción
+        type: string
+      - name: category
+        label: Categoría
+        type: string
+      - name: createdAt
+        label: Creado en
+        type: string
+      - name: updatedAt
+        label: Actualizado en
+        type: string
+      - name: tags
+        label: Tags
+        type: list
+        of:
+          type: string
+      - name: author
+        label: Autor
+        type: reference
+        options:
+          collection: authors
+          multiple: false
+
+  - name: pages
+    label: Páginas
+    type: collection
+    path: src/content/pages
+    fields:
+      - name: title
+        label: Título
+        type: string
+      - name: description
+        label: Descripción
+        type: string
+      - name: updatedAt
+        label: Actualizado en
+        type: string
+
+  - name: authors
+    label: Autores
+    type: collection
+    path: src/content/authors
+    fields:
+      - name: name
+        label: Nombre
+        type: string
+      - name: alias
+        label: Alias
+        type: string
+      - name: bio
+        label: Biografía
+        type: string
+      - name: avatar
+        label: Avatar
+        type: string
+      - name: networks
+        label: Redes sociales
+        type: object
+        fields:
+          - name: twitter
+            label: Twitter
+            type: string
+          - name: instagram
+            label: Instagram
+            type: string
+          - name: tiktok
+            label: TikTok
+            type: string
+          - name: github
+            label: GitHub
+            type: string
